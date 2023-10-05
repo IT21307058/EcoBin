@@ -155,7 +155,7 @@ const AdvertiseHome = (props) => {
     return (
         <View style={styles.container}>
             <ImageBackground
-                source={{ uri: 'https://cdn.mos.cms.futurecdn.net/3qpVahdh69fiUrJdswtfUn.jpg' }}
+                source={imagePath.background}
                 style={styles.imgStyle}
             >
                 <SafeAreaView style={{ flex: 1 }}>

@@ -30,12 +30,12 @@ import OnlyProduct from './src/Screen/Advertise/OnlyProduct';
 import OnlyProgram from './src/Screen/Advertise/OnlyProgram';
 
 function TopTabsGroup() {
-  return(
+  return (
     <TopTabs.Navigator>
-    <TopTabs.Screen name="main" component={AdvertiseHome}/>
-    <TopTabs.Screen name="Product" component={OnlyProduct}/>
-    <TopTabs.Screen name="Program" component={OnlyProgram}/>
-  </TopTabs.Navigator>
+      <TopTabs.Screen name="main" component={AdvertiseHome} />
+      <TopTabs.Screen name="Product" component={OnlyProduct} />
+      <TopTabs.Screen name="Program" component={OnlyProgram} />
+    </TopTabs.Navigator>
   )
 }
 
@@ -54,7 +54,7 @@ function TabNavigator() {
             return (
               <Image style={{
                 tintColor: focused ? colors.themeColor : colors.blackOpacity50
-              }} source={imagePath.home} />
+              }} source={imagePath.blueHome} />
             )
           }
         }}
@@ -65,21 +65,32 @@ function TabNavigator() {
             return (
               <Image style={{
                 tintColor: focused ? colors.themeColor : colors.blackOpacity50
-              }} source={imagePath.home} />
+              }} source={imagePath.community} />
             )
           }
         }}
       />
-      <Tab.Screen name='Advertise' component={TopTabsGroup} />
-      <Tab.Screen name='Profile' component={UserAccount} 
-      options={{
-        tabBarIcon:({focused}) => {
-            return(
-                <Image style={{tintColor:focused?colors.themeColor:colors.blackOpacity50
-                }} source={imagePath.profile}/>
+      <Tab.Screen name='Advertise' component={TopTabsGroup}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <Image style={{
+                tintColor: focused ? colors.themeColor : colors.blackOpacity50
+              }} source={imagePath.blog} />
             )
-        }
-    }}
+          }
+        }}
+      />
+      <Tab.Screen name='Profile' component={UserAccount}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <Image style={{
+                tintColor: focused ? colors.themeColor : colors.blackOpacity50
+              }} source={imagePath.user} />
+            )
+          }
+        }}
       />
     </Tab.Navigator>
   )
