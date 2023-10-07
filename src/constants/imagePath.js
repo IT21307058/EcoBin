@@ -10,4 +10,8 @@ export default {
     blog: require('../assests/images/blog.png'),
     user: require('../assests/images/user.png'),
     background: require('../assests/images/background.png'),
+    event: require('../assests/images/events.png'),
+    foodswap: require('../assests/images/foodswap.png'),
+    goal: require('../assests/images/goal.png'),
+    reminder: require('../assests/images/reminder.png'),
 }
