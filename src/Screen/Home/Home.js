@@ -7,7 +7,7 @@ import ButtonComp from '../../Components/ButtonComp';
 import colors from '../../styles/color';
 import { useNavigation } from '@react-navigation/native'
 // import { TouchableOpacity } from 'react-native-gesture-handler';
-
+//bhanuka
 
 const Home = (props) => {
   const navigation = useNavigation();
