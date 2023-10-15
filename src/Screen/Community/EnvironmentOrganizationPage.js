@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView,TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
@@ -8,9 +8,9 @@ import colors from '../../styles/color';
 import { useNavigation } from '@react-navigation/native'
 
 import { db } from '../../../config';
-import { ref, onValue, remove} from 'firebase/database'
+import { ref, onValue, remove } from 'firebase/database'
 
-const AllCommunity = () => {
+const EnvironmentOrganizationPage = () => {
     const navigation = useNavigation();
 
     const [data, setData] = useState([]);
@@ -42,17 +42,6 @@ const AllCommunity = () => {
         });
     }, []);
 
-    // const handleLike = (item) => {
-    //     // Ensure 'likes' is a valid number or initialize it with 0
-    //     const newLikes = isNaN(item.likes) ? 0 : item.likes + 1;
-
-    //     // Update the like count for the post in the database
-    //     const postRef = ref(db, `community/${item.id}`);
-    //     set(postRef, {
-    //         likes: newLikes,
-    //     });
-    // };
-
     const handleSingleItem = (item) => {
         // Navigate to the update page with the item data
         navigation.navigate('OnePost', { item });
@@ -62,27 +51,17 @@ const AllCommunity = () => {
         // Filter the data based on the search query
         const normalizedQuery = searchQuery.toLowerCase();
         // return item.topic.toLowerCase().includes(normalizedQuery) || item.description.toLowerCase().includes(normalizedQuery);
-        // Check if 'item.communityType', 'item.topic', and 'item.description' exist before using toLowerCase()
-        // const communityType = item.communityType ? item.communityType.toLowerCase() : '';
-        // const topic = item.topic ? item.topic.toLowerCase() : '';
-        // const description = item.description ? item.description.toLowerCase() : '';
-
-        // return (
-        //     communityType === 'residential users' &&
-        //     (communityType.includes(normalizedQuery) ||
-        //         topic.includes(normalizedQuery) ||
-        //         description.includes(normalizedQuery))
-        // );
 
         return (
-            item.communityType.toLowerCase() === 'residential users' &&
+            item.communityType.toLowerCase() === 'environment organizations' &&
             (item.communityType.toLowerCase().includes(normalizedQuery) ||
-                item.topic.toLowerCase().includes(normalizedQuery) ||
-                item.description.toLowerCase().includes(normalizedQuery))
-        );
+              item.topic.toLowerCase().includes(normalizedQuery) ||
+              item.description.toLowerCase().includes(normalizedQuery))
+          );
     });
 
-
+    // Filter the data to show only posts with "Educational Institutes" category
+//   const educationalInstitutePosts = filteredData.filter((item) => item.category === 'Educational Institutes');
 
     return (
         <View style={styles.container}>
@@ -95,7 +74,7 @@ const AllCommunity = () => {
                         <Image source={imagePath.backarrow} />
                         <Image source={imagePath.bell} />
                     </View>
-                    <Text style={styles.AdvertiseTextStyle}>Residential User</Text>
+                    <Text style={styles.AdvertiseTextStyle}>Environment Organization</Text>
                 </SafeAreaView>
             </ImageBackground>
             <View style={{
@@ -127,9 +106,6 @@ const AllCommunity = () => {
                                 {/* <Text style={styles.title}>{item.advertiseType}</Text> */}
                                 <Text style={styles.body}>{item.topic}</Text>
                                 <Text style={styles.body}>{item.description}</Text>
-                                {/* <TouchableOpacity onPress={() => handleLike(item)}>
-                                    <Text style={styles.likeButton}>Like ({item.likes})</Text>
-                                </TouchableOpacity> */}
                                 {/* <TouchableOpacity onPress={() => handleUpdate(item)}>
                                     <Text style={styles.updateButton}>Update</Text>
                                 </TouchableOpacity> */}
@@ -150,7 +126,7 @@ const AllCommunity = () => {
     )
 }
 
-export default AllCommunity
+export default EnvironmentOrganizationPage
 
 const styles = StyleSheet.create({
     container: {
@@ -163,10 +139,10 @@ const styles = StyleSheet.create({
         // alignItems: 'center'
     },
     AdvertiseTextStyle: {
-        fontSize: scale(25),
+        fontSize: scale(20),
         color: 'white',
         fontWeight: 'bold',
-        marginLeft: 100
+        marginLeft: 70
     },
     headerStyle: {
         paddingVertical: moderateVerticalScale(16),
@@ -212,8 +188,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        alignItems: 'center',
-        justifyContent: 'center'
+        alignItems:'center',
+        justifyContent:'center'
     },
     AddIconImage: {
         width: 50,
@@ -224,35 +200,29 @@ const styles = StyleSheet.create({
     itemContainer: {
         borderBottomWidth: 1,
         borderColor: '#ddd',
-        padding: 10, backgroundColor: 'white',
+        padding: 10,backgroundColor: 'white',
         borderRadius: 10,
         padding: 16,
         marginBottom: 16,
     },
     title: {
-        fontSize: 18,
-        fontWeight: 'bold',
+      fontSize: 18,
+      fontWeight: 'bold',
     },
     body: {
-        fontSize: 16,
-        marginTop: 8,
+      fontSize: 16,
+      marginTop: 8,
     },
     searchInput: {
-        width: '80%',
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        borderRadius: 5,
-        paddingLeft: 10,
-        fontSize: 16,
-        backgroundColor: 'white', // Background color
-        marginBottom: 28,
-        alignSelf: "center"
-    },
-    likeButton: {
-        fontSize: 16,
-        color: 'blue', // You can style the like button as you prefer
-        marginTop: 8,
-        fontWeight: 'bold',
+      width: '80%',
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      borderRadius: 5,
+      paddingLeft: 10,
+      fontSize: 16,
+      backgroundColor: 'white', // Background color
+      marginBottom: 28,
+      alignSelf:"center"
     }
 })

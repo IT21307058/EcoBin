@@ -14,4 +14,7 @@ export default {
     foodswap: require('../assests/images/foodswap.png'),
     goal: require('../assests/images/goal.png'),
     reminder: require('../assests/images/reminder.png'),
+    residentialUser: require('../assests/images/residentialuser.png'),
+    educationcampus: require('../assests/images/educationcampus.png'),
+    environmentalOrg: require('../assests/images/environmental.jpg'),
 }

@@ -28,6 +28,9 @@ import imagePath from './src/constants/imagePath';
 import OneAdvertise from './src/Screen/Advertise/OneAdvertise';
 import OnlyProduct from './src/Screen/Advertise/OnlyProduct';
 import OnlyProgram from './src/Screen/Advertise/OnlyProgram';
+import CommunityHome from './src/Screen/Community/CommunityHome';
+import EducationalUserPage from './src/Screen/Community/EducationalUserPage';
+import EnvironmentOrganizationPage from './src/Screen/Community/EnvironmentOrganizationPage';
 
 function TopTabsGroup() {
   return (
@@ -100,6 +103,9 @@ function StackNavigator() {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='CommunityHome' component={CommunityHome} />
+      <Stack.Screen name='EducationalUserPage' component={EducationalUserPage} />
+      <Stack.Screen name='EnvironmentOrganizationPage' component={EnvironmentOrganizationPage} />
       <Stack.Screen name='AllCommunity' component={AllCommunity} />
       <Stack.Screen name='AddPost' component={AddPost} />
       <Stack.Screen name='UpdatePost' component={UpdatePost} />

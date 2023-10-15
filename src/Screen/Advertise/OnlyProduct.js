@@ -162,7 +162,7 @@ const OnlyProduct = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={{ uri: 'https://cdn.mos.cms.futurecdn.net/3qpVahdh69fiUrJdswtfUn.jpg' }}
+        source={imagePath.background}
         style={styles.imgStyle}
       >
         <SafeAreaView style={{ flex: 1 }}>
@@ -173,7 +173,7 @@ const OnlyProduct = () => {
             </TouchableOpacity>
 
           </View>
-          <Text style={styles.AdvertiseTextStyle}>Explore</Text>
+          <Text style={styles.AdvertiseTextStyle}>Product</Text>
         </SafeAreaView>
       </ImageBackground>
       <View style={{
