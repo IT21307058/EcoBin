@@ -17,4 +17,5 @@ export default {
     residentialUser: require('../assests/images/residentialuser.png'),
     educationcampus: require('../assests/images/educationcampus.png'),
     environmentalOrg: require('../assests/images/environmental.jpg'),
+    roundcomment: require('../assests/images/round-shape.png'),
 }

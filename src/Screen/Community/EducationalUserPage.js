@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView,TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { db } from '../../../config';
 import { ref, onValue, remove } from 'firebase/database'
+import moment from 'moment';
 
 const EducationalUserPage = () => {
     const navigation = useNavigation();
@@ -24,6 +25,11 @@ const EducationalUserPage = () => {
     const handleImagePress1 = () => {
         // Navigate to the 'UpdateAdvertise' screen when the image is pressed
         navigation.navigate('AddPost');
+    };
+
+    const formatDate = (dateString) => {
+        const date = moment(dateString);
+        return date.format('YYYY/MM/DD');
     };
 
     useEffect(() => {
@@ -47,6 +53,11 @@ const EducationalUserPage = () => {
         navigation.navigate('OnePost', { item });
     };
 
+    const handleFeedback = (item) => {
+        // Navigate to the update page with the item data
+        navigation.navigate('FeedbackPage', { item });
+    };
+
     const filteredData = data.filter((item) => {
         // Filter the data based on the search query
         const normalizedQuery = searchQuery.toLowerCase();
@@ -55,13 +66,13 @@ const EducationalUserPage = () => {
         return (
             item.communityType.toLowerCase() === 'educational institutes' &&
             (item.communityType.toLowerCase().includes(normalizedQuery) ||
-              item.topic.toLowerCase().includes(normalizedQuery) ||
-              item.description.toLowerCase().includes(normalizedQuery))
-          );
+                item.topic.toLowerCase().includes(normalizedQuery) ||
+                item.description.toLowerCase().includes(normalizedQuery))
+        );
     });
 
     // Filter the data to show only posts with "Educational Institutes" category
-//   const educationalInstitutePosts = filteredData.filter((item) => item.category === 'Educational Institutes');
+    //   const educationalInstitutePosts = filteredData.filter((item) => item.category === 'Educational Institutes');
 
     return (
         <View style={styles.container}>
@@ -104,8 +115,18 @@ const EducationalUserPage = () => {
                         <TouchableOpacity onPress={() => handleSingleItem(item)}>
                             <View style={styles.itemContainer}>
                                 {/* <Text style={styles.title}>{item.advertiseType}</Text> */}
-                                <Text style={styles.body}>{item.topic}</Text>
-                                <Text style={styles.body}>{item.description}</Text>
+                                {/* <Text style={styles.body}>{item.topic}</Text>
+                                <Text style={styles.body}>{item.description}</Text> */}
+                                <View>
+                                    <Text style={styles.title}>{item.topic}</Text>
+                                    <Text style={styles.body}>{item.description}</Text>
+                                </View>
+                                <View style={{ alignItems: 'flex-end' }}>
+                                    <TouchableOpacity onPress={() => handleFeedback(item)}>
+                                        <Image source={imagePath.roundcomment} style={styles.AddIconImage} />
+                                    </TouchableOpacity>
+                                    <Text style={styles.date}>{formatDate(item.date)}</Text>
+                                </View>
                                 {/* <TouchableOpacity onPress={() => handleUpdate(item)}>
                                     <Text style={styles.updateButton}>Update</Text>
                                 </TouchableOpacity> */}
@@ -188,8 +209,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        alignItems:'center',
-        justifyContent:'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     AddIconImage: {
         width: 50,
@@ -198,31 +219,33 @@ const styles = StyleSheet.create({
         // color:"#fff"
     },
     itemContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         borderBottomWidth: 1,
         borderColor: '#ddd',
-        padding: 10,backgroundColor: 'white',
+        padding: 10, backgroundColor: 'white',
         borderRadius: 10,
         padding: 16,
         marginBottom: 16,
     },
     title: {
-      fontSize: 18,
-      fontWeight: 'bold',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
     body: {
-      fontSize: 16,
-      marginTop: 8,
+        fontSize: 16,
+        marginTop: 8,
     },
     searchInput: {
-      width: '80%',
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 1,
-      borderRadius: 5,
-      paddingLeft: 10,
-      fontSize: 16,
-      backgroundColor: 'white', // Background color
-      marginBottom: 28,
-      alignSelf:"center"
+        width: '80%',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingLeft: 10,
+        fontSize: 16,
+        backgroundColor: 'white', // Background color
+        marginBottom: 28,
+        alignSelf: "center"
     }
 })

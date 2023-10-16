@@ -8,7 +8,8 @@ import colors from '../../styles/color';
 import { useNavigation } from '@react-navigation/native'
 
 import { db } from '../../../config';
-import { ref, onValue, remove} from 'firebase/database'
+import { ref, onValue, remove, set } from 'firebase/database'
+import moment from 'moment';
 
 const AllCommunity = () => {
     const navigation = useNavigation();
@@ -21,10 +22,39 @@ const AllCommunity = () => {
     //     navigation.navigate('OnePost', { item });
     // };
 
+    const formatDate = (dateString) => {
+        const date = moment(dateString);
+        return date.format('YYYY/MM/DD');
+    };
+
     const handleImagePress1 = () => {
         // Navigate to the 'UpdateAdvertise' screen when the image is pressed
         navigation.navigate('AddPost');
     };
+
+    // const handleLike = (item) => {
+    //     const postId = item.id; // Get the unique post identifier
+
+    //     // Create a reference for the likes count of the specific post in a separate database (communityLikes)
+    //     const communityLikesRef = ref(db, `communityLikes/${item.id}`);
+
+    //     // Get the current number of likes for the post
+    //     const currentLikes = item.likes || 0;
+
+    //     // Increment the likes count by 1
+    //     const newLikes = currentLikes + 1;
+
+    //     // Update the likes count for the specific post in the communityLikes database
+    //     set(communityLikesRef, newLikes)
+    //         .then(() => {
+    //             // Successfully updated the likes count for the post
+    //             console.log(`Likes updated successfully for post ${postId}`);
+    //         })
+    //         .catch((error) => {
+    //             // Handle the error, if any
+    //             console.error(`Error updating likes for post ${postId}:`, error);
+    //         });
+    // };
 
     useEffect(() => {
         // Use the Firebase Realtime Database reference to listen for data changes
@@ -56,6 +86,11 @@ const AllCommunity = () => {
     const handleSingleItem = (item) => {
         // Navigate to the update page with the item data
         navigation.navigate('OnePost', { item });
+    };
+
+    const handleFeedback = (item) => {
+        // Navigate to the update page with the item data
+        navigation.navigate('FeedbackPage', { item });
     };
 
     const filteredData = data.filter((item) => {
@@ -125,8 +160,31 @@ const AllCommunity = () => {
                         <TouchableOpacity onPress={() => handleSingleItem(item)}>
                             <View style={styles.itemContainer}>
                                 {/* <Text style={styles.title}>{item.advertiseType}</Text> */}
-                                <Text style={styles.body}>{item.topic}</Text>
+                                {/* <Text style={styles.title}>{item.topic}</Text>
                                 <Text style={styles.body}>{item.description}</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+                                    <Image source={imagePath.roundcomment} style={styles.AddIconImage} />
+                                    <Text style={styles.date}>{formatDate(item.date)}</Text>
+                                </View> */}
+                                {/* <View style={{ flex: 1 }}> */}
+                                <View>
+                                    <Text style={styles.title}>{item.topic}</Text>
+                                    <Text style={styles.body}>{item.description}</Text>
+                                </View>
+                                <View style={{ alignItems: 'flex-end' }}>
+                                    <TouchableOpacity onPress={() => handleFeedback(item)}>
+                                        <Image source={imagePath.roundcomment} style={styles.AddIconImage} />
+                                    </TouchableOpacity>
+                                    <Text style={styles.date}>{formatDate(item.date)}</Text>
+                                </View>
+                                {/* </View> */}
+                                {/* <Text style={styles.date}>{formatDate(item.date)}</Text> */}
+                                {/* <View>
+                                    <TouchableOpacity onPress={() => handleLike(item)}>
+                                        <Text name="thumbs-up" size={20} color="blue">Like</Text>
+                                    </TouchableOpacity>
+                                    <Text>{item.likes || 0}</Text>
+                                </View> */}
                                 {/* <TouchableOpacity onPress={() => handleLike(item)}>
                                     <Text style={styles.likeButton}>Like ({item.likes})</Text>
                                 </TouchableOpacity> */}
@@ -222,6 +280,8 @@ const styles = StyleSheet.create({
         // color:"#fff"
     },
     itemContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         borderBottomWidth: 1,
         borderColor: '#ddd',
         padding: 10, backgroundColor: 'white',
@@ -230,12 +290,14 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     title: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold',
+        color: colors.themeColor
     },
     body: {
-        fontSize: 16,
+        fontSize: 15,
         marginTop: 8,
+        color: colors.blackOpacity80
     },
     searchInput: {
         width: '80%',
@@ -249,10 +311,11 @@ const styles = StyleSheet.create({
         marginBottom: 28,
         alignSelf: "center"
     },
-    likeButton: {
-        fontSize: 16,
-        color: 'blue', // You can style the like button as you prefer
-        marginTop: 8,
-        fontWeight: 'bold',
+    date: {
+        // marginLeft: 240,
+        color: colors.blackOpacity50
+    },
+    commentcontainer: {
+
     }
 })

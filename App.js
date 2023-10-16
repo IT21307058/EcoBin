@@ -4,6 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React, { useState, useEffect } from 'react';
+import { firebase } from './config'
+
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const TopTabs = createMaterialTopTabNavigator();
@@ -32,6 +35,9 @@ import CommunityHome from './src/Screen/Community/CommunityHome';
 import EducationalUserPage from './src/Screen/Community/EducationalUserPage';
 import EnvironmentOrganizationPage from './src/Screen/Community/EnvironmentOrganizationPage';
 
+import Login from './src/Screen/Auth/Login';
+import Registeration from './src/Screen/Auth/Registeration';
+
 function TopTabsGroup() {
   return (
     <TopTabs.Navigator>
@@ -43,6 +49,31 @@ function TopTabsGroup() {
 }
 
 function TabNavigator() {
+
+  const [intializing, setInitilizing] = useState(true);
+  const [user, setUser] = useState();
+
+  function onAuthStateChanges(user) {
+    setUser(user);
+    if (intializing) setInitilizing(false);
+  }
+
+  useEffect(() => {
+    const subcriber = firebase.auth().onAuthStateChanged(onAuthStateChanges);
+    return subcriber;
+  }, []);
+
+  if (intializing) return null;
+
+  if (!user) {
+    return (
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='Login' component={Login}  />
+        <Stack.Screen name='Registeration' component={Registeration}/>
+      </Stack.Navigator>
+    )
+  }
+
   return (
     <Tab.Navigator
       screenOptions={{

@@ -1,6 +1,9 @@
 import firebase from 'firebase/compat/app';
 import { getDatabase } from 'firebase/database';
 
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 const firebaseConfig = {
     // apiKey: "AIzaSyBbyTAUfH7PmxyYOw_VjB8cg-NpIU_R1FE",
     // authDomain: "realtimeexpo-df4ff.firebaseapp.com",
@@ -27,4 +30,4 @@ if (firebase.apps.length === 0) {
 
 const db = getDatabase();
 
-export { db }
+export { firebase, db }
