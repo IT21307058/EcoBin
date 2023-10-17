@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const TopTabs = createMaterialTopTabNavigator();
 
-import colors from "../ecobin/src/styles/color"
+import colors from "../EcoBin/src/styles/color"
 
 import AdvertiseHome from './src/Screen/Advertise/AdvertiseHome';
 import AddAdvertise from './src/Screen/Advertise/AddAdvertise';

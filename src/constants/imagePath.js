@@ -1,5 +1,6 @@
 export default {
     backarrow: require('../assests/images/back.png'),
+    bluearrow: require('../assests/images/blue_arrow.png'),
     bell: require('../assests/images/bell.png'),
     bluebell: require('../assests/images/blue_bell.png'),
     home: require('../assests/images/home.png'),

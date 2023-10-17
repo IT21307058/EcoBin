@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image,TouchableOpacity  } from 'react-native'
 import React, { useState } from 'react'
 // import React from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
@@ -14,6 +14,7 @@ import { db } from '../../../config';
 import { ref, set, push } from 'firebase/database'
 
 const AddAdvertise = () => {
+    const navigation = useNavigation();
     const [topic, setTopic] = useState('');
     const [description, setDescription] = useState('');
     const [advertiseType, setAdvertiseType] = useState('Program');
@@ -51,8 +52,10 @@ const AddAdvertise = () => {
 
             <SafeAreaView>
                 <View style={styles.headerStyle}>
-                    <Image source={imagePath.backarrow} />
-                    <Image source={imagePath.bell} />
+                <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                        <Image source={imagePath.bluearrow} />
+                    </TouchableOpacity>
+                    <Image source={imagePath.bluebell} />
                 </View>
                 <View style={{ marginTop: 50, alignSelf: 'center' }}>
                     <Text style={styles.headerText}>Create Advertisment</Text>
