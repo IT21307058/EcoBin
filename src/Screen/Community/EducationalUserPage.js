@@ -229,12 +229,14 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     title: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold',
+        color: colors.themeColor
     },
     body: {
-        fontSize: 16,
+        fontSize: 15,
         marginTop: 8,
+        color: colors.blackOpacity80
     },
     searchInput: {
         width: '80%',
