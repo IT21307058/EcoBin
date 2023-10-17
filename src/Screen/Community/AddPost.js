@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView,TextInput, FlatList, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
@@ -6,14 +6,14 @@ import imagePath from '../../constants/imagePath';
 import ButtonComp from '../../Components/ButtonComp';
 import colors from '../../styles/color';
 // import TextInputWithLabel from '../../Components/TextInputWithLabel';
-// import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { Picker } from '@react-native-picker/picker';
 
 import { db } from '../../../config';
 import { ref, set, push } from 'firebase/database'
 
 const AddPost = () => {
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
 
     const [topic, setTopic] = useState('');
     const [description, setDescription] = useState('');
@@ -52,8 +52,10 @@ const AddPost = () => {
 
             <SafeAreaView>
                 <View style={styles.headerStyle}>
-                    <Image source={imagePath.backarrow} />
-                    <Image source={imagePath.bell} />
+                    <TouchableOpacity onPress={() => navigation.navigate('CommunityHome')}>
+                        <Image source={imagePath.bluearrow} />
+                    </TouchableOpacity>
+                    <Image source={imagePath.bluebell} />
                 </View>
                 <View style={{ marginTop: 50, alignSelf: 'center' }}>
                     <Text style={styles.headerText}>Create Your Post</Text>
@@ -152,8 +154,8 @@ const styles = StyleSheet.create({
         marginBottom: 28
     },
     picker: {
-      backgroundColor: 'white',
-      borderRadius: 10,
-      marginBottom: 28,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        marginBottom: 28,
     }
 })

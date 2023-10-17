@@ -16,6 +16,7 @@ const EducationalUserPage = () => {
 
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const DESCRIPTION_CHARACTER_LIMIT = 20;
 
     // const handleItemPress = (item) => {
     //     // Navigate to the desired page with the item data
@@ -82,7 +83,9 @@ const EducationalUserPage = () => {
             >
                 <SafeAreaView style={{ flex: 1 }}>
                     <View style={styles.headerStyle}>
-                        <Image source={imagePath.backarrow} />
+                    <TouchableOpacity onPress={() => navigation.navigate('CommunityHome')}>
+                            <Image source={imagePath.backarrow} />
+                        </TouchableOpacity>
                         <Image source={imagePath.bell} />
                     </View>
                     <Text style={styles.AdvertiseTextStyle}>Educational Institutes</Text>
@@ -119,11 +122,21 @@ const EducationalUserPage = () => {
                                 <Text style={styles.body}>{item.description}</Text> */}
                                 <View>
                                     <Text style={styles.title}>{item.topic}</Text>
-                                    <Text style={styles.body}>{item.description}</Text>
+                                    {/* <Text style={styles.body}>{item.description}</Text> */}
+                                    <Text style={styles.body}>
+                                        {item.description.length > DESCRIPTION_CHARACTER_LIMIT
+                                            ? `${item.description.slice(0, DESCRIPTION_CHARACTER_LIMIT)}... `
+                                            : item.description}
+                                        {item.description.length > DESCRIPTION_CHARACTER_LIMIT && (
+                                            <Text style={{ color: 'blue' }} onPress={() => handleSeeMore(item)}>
+                                                See More
+                                            </Text>
+                                        )}
+                                    </Text>
                                 </View>
                                 <View style={{ alignItems: 'flex-end' }}>
                                     <TouchableOpacity onPress={() => handleFeedback(item)}>
-                                        <Image source={imagePath.roundcomment} style={styles.AddIconImage} />
+                                        <Image source={imagePath.roundcomment} style={styles.commentcontainer} />
                                     </TouchableOpacity>
                                     <Text style={styles.date}>{formatDate(item.date)}</Text>
                                 </View>
@@ -229,7 +242,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     title: {
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: 'bold',
         color: colors.themeColor
     },
@@ -249,5 +262,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white', // Background color
         marginBottom: 28,
         alignSelf: "center"
+    },
+    commentcontainer: {
+        height: 40,
+        width: 40
     }
 })

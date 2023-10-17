@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image,TouchableOpacity  } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 // import React from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
@@ -34,7 +34,7 @@ const AddAdvertise = () => {
             advertiseType: advertiseType,
             topic: topic,
             description: description,
-            date:formattedDate,
+            date: formattedDate,
         })
             .then(() => {
                 console.log('Data added successfully');
@@ -52,7 +52,7 @@ const AddAdvertise = () => {
 
             <SafeAreaView>
                 <View style={styles.headerStyle}>
-                <TouchableOpacity onPress={() => navigation.navigate('main')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('main')}>
                         <Image source={imagePath.bluearrow} />
                     </TouchableOpacity>
                     <Image source={imagePath.bluebell} />

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView,TextInput, FlatList, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image,TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
@@ -14,7 +14,7 @@ import { ref, set } from 'firebase/database'
 
 
 const UpdatePost = ({ route }) => {
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
 
     const { item } = route.params; // Get the item data passed from the previous screen
 
@@ -50,8 +50,10 @@ const UpdatePost = ({ route }) => {
 
             <SafeAreaView>
                 <View style={styles.headerStyle}>
-                    <Image source={imagePath.backarrow} />
-                    <Image source={imagePath.bell} />
+                    <TouchableOpacity onPress={() => navigation.navigate('CommunityHome')}>
+                        <Image source={imagePath.bluearrow} />
+                    </TouchableOpacity>
+                    <Image source={imagePath.bluebell} />
                 </View>
                 <View style={{ marginTop: 50, alignSelf: 'center' }}>
                     <Text style={styles.headerText}>Update Your Post</Text>
@@ -140,9 +142,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: moderateScale(16)
     },
     picker: {
-      backgroundColor: 'white',
-      borderRadius: 10,
-      marginBottom: 28,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        marginBottom: 28,
     },
     input: {
         backgroundColor: 'white',
