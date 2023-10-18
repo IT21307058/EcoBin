@@ -41,7 +41,7 @@ const OneBlog = ({ route }) => {
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.headerStyle}>
-          <TouchableOpacity onPress={() => navigation.navigate('main')}>
+          <TouchableOpacity onPress={() => navigation.navigate('BlogHome')}>
             <Image source={imagePath.bluearrow} />
           </TouchableOpacity>
           <Image source={imagePath.bluebell} />

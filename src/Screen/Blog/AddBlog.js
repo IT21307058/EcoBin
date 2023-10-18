@@ -13,6 +13,7 @@ import colors from "../../styles/color";
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../../../config";
 import { ref, set, push } from "firebase/database";
+import imagePath from "../../constants/imagePath";
 
 const AddBlog = () => {
   const navigation = useNavigation();
@@ -40,7 +41,7 @@ const AddBlog = () => {
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.headerStyle}>
-          <TouchableOpacity onPress={() => navigation.navigate("main")}>
+          <TouchableOpacity onPress={() => navigation.navigate("BlogHome")}>
             <Image source={imagePath.bluearrow} />
           </TouchableOpacity>
           <Image source={imagePath.bluebell} />

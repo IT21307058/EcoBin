@@ -51,6 +51,12 @@ const BlogHome = (props) => {
     navigation.navigate("OneBlog", { item });
   };
 
+  const handleSeeMore = (item) => {
+    // Navigate to the detailed view of the selected blog item
+    navigation.navigate("DetailedBlogView", { item });
+  };
+  
+
   const filteredData = data.filter((item) => {
     // Filter the data based on the search query
     const normalizedQuery = searchQuery.toLowerCase();
@@ -70,7 +76,7 @@ const BlogHome = (props) => {
               <Image source={imagePath.bell} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.BlogTextStyle}>Explore</Text>
+          <Text style={styles.BlogTextStyle}>Blogs</Text>
         </SafeAreaView>
       </ImageBackground>
       <View
