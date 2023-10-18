@@ -19,4 +19,6 @@ export default {
     educationcampus: require('../assests/images/educationcampus.png'),
     environmentalOrg: require('../assests/images/environmental.jpg'),
     roundcomment: require('../assests/images/round-shape.png'),
+    white_logo: require('../assests/images/ecobin_white_logo.png'),
+    green_round: require('../assests/images/green_round.png'),
 }
