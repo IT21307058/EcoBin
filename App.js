@@ -23,6 +23,8 @@ import AddPost from './src/Screen/Community/AddPost';
 import UpdatePost from './src/Screen/Community/UpdatePost';
 import OnePost from './src/Screen/Community/OnePost';
 import FeedbackPage from './src/Screen/Community/FeedbackPage';
+import AllGoal from "./src/Screen/Goal/AllGoal";
+import AddGoal from "./src/Screen/Goal/AddGoal";
 
 import UserAccount from './src/Screen/UserAccount/UserAccount';
 import Home from './src/Screen/Home/Home';
@@ -146,6 +148,8 @@ function StackNavigator() {
       <Stack.Screen name='AddAdvertise' component={AddAdvertise} />
       <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
       <Stack.Screen name='OneAdvertise' component={OneAdvertise} />
+        <Stack.Screen name="AllGoal" component={AllGoal} />
+        <Stack.Screen name="AddGoal" component={AddGoal} />
     </Stack.Navigator>
   )
 }

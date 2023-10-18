@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
+    "@react-native-community/datetimepicker": "^7.6.1",
     "@react-native-picker/picker": "^2.5.1",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/drawer": "^6.6.3",
