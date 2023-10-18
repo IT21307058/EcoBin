@@ -82,7 +82,7 @@ function TabNavigator() {
         tabBaractiveTintColor: colors.themeColor
       }}
     >
-      <Tab.Screen name='Home' component={Home}
+      <Tab.Screen name='Home' component={StackHomeNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -104,7 +104,7 @@ function TabNavigator() {
           }
         }}
       />
-      <Tab.Screen name='Advertise' component={TopTabsGroup}
+      <Tab.Screen name='Advertise' component={StackAdvertiseNavigator}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -143,6 +143,39 @@ function StackNavigator() {
       <Stack.Screen name='OnePost' component={OnePost} />
       <Stack.Screen name='FeedbackPage' component={FeedbackPage} />
       {/* <Stack.Screen name='AdvertiseHome' component={AdvertiseHome} /> */}
+      {/* <Stack.Screen name='AddAdvertise' component={AddAdvertise} />
+      <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
+      <Stack.Screen name='OneAdvertise' component={OneAdvertise} /> */}
+    </Stack.Navigator>
+  )
+}
+
+function StackHomeNavigator() {
+
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='MainHome' component={Home} />
+
+      {/* Insert Here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
+
+    </Stack.Navigator>
+  )
+}
+
+
+function StackAdvertiseNavigator() {
+
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {/* <Stack.Screen name='CommunityHome' component={CommunityHome} />
+      <Stack.Screen name='EducationalUserPage' component={EducationalUserPage} />
+      <Stack.Screen name='EnvironmentOrganizationPage' component={EnvironmentOrganizationPage} />
+      <Stack.Screen name='AllCommunity' component={AllCommunity} />
+      <Stack.Screen name='AddPost' component={AddPost} />
+      <Stack.Screen name='UpdatePost' component={UpdatePost} />
+      <Stack.Screen name='OnePost' component={OnePost} />
+      <Stack.Screen name='FeedbackPage' component={FeedbackPage} /> */}
+      <Stack.Screen name='AdvertiseHome' component={TopTabsGroup} />
       <Stack.Screen name='AddAdvertise' component={AddAdvertise} />
       <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
       <Stack.Screen name='OneAdvertise' component={OneAdvertise} />
@@ -150,19 +183,10 @@ function StackNavigator() {
   )
 }
 
+
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='AdvertiseHome' component={AdvertiseHome} />
-        <Stack.Screen name='AddAdvertise' component={AddAdvertise} />
-        <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
-        <Stack.Screen name='AllCommunity' component={AllCommunity} />
-        <Stack.Screen name='AddPost' component={AddPost} />
-        <Stack.Screen name='UpdatePost' component={UpdatePost} />
-        <Stack.Screen name='OnePost' component={OnePost} />
-        <Stack.Screen name='FeedbackPage' component={FeedbackPage} />
-      </Stack.Navigator> */}
       <TabNavigator />
     </NavigationContainer>
   );
