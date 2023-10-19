@@ -39,87 +39,87 @@ const AddBlog = () => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View style={styles.headerStyle}>
           <TouchableOpacity onPress={() => navigation.navigate("BlogHome")}>
             <Image source={imagePath.bluearrow} />
           </TouchableOpacity>
           <Image source={imagePath.bluebell} />
         </View>
-        <View style={{ marginTop: 50, alignSelf: "center" }}>
+        <View style={styles.content}>
           <Text style={styles.headerText}>Create Blog</Text>
-        </View>
-        <View
-          style={{
-            backgroundColor: colors.borderColor,
-            shadowColor: "#000",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.2,
-            width: "75%",
-            alignSelf: "center",
-            padding: 15,
-            borderRadius: 20,
-            paddingHorizontal: 24,
-            paddingTop: 44,
-          }}
-        >
-          <TextInput
-            placeholder="Topic"
-            placeholderTextColor="lightgray"
-            value={topic}
-            onChangeText={(text) => setTopic(text)}
-            style={styles.input}
-          />
-
-          <TextInput
-            placeholder="Body"
-            placeholderTextColor="lightgray"
-            value={body}
-            onChangeText={(text) => setBody(text)}
-            multiline={true}
-            numberOfLines={10}
-            textAlignVertical="top"
-            style={[styles.input, { height: 200 }]}
-          />
-
-          <ButtonComp btnText={"Publish"} onPress={dataAddOn} />
+          <View style={styles.inputContainer}>
+            <TextInput
+              placeholder="Topic"
+              placeholderTextColor="lightgray"
+              value={topic}
+              onChangeText={(text) => setTopic(text)}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="Body"
+              placeholderTextColor="lightgray"
+              value={body}
+              onChangeText={(text) => setBody(text)}
+              multiline={true}
+              numberOfLines={10}
+              textAlignVertical="top"
+              style={[styles.input, styles.bodyInput]}
+            />
+            <ButtonComp btnText={"Publish"} onPress={dataAddOn} />
+          </View>
         </View>
       </SafeAreaView>
     </View>
   );
 };
 
-export default AddBlog;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    justifyContent: "space-between",
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
   },
   headerText: {
     textTransform: "uppercase",
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: "bold",
     color: colors.themeColor,
-    marginBottom: 14,
+    marginVertical: 24,
   },
   headerStyle: {
     paddingVertical: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.2,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 16,
   },
+  inputContainer: {
+    backgroundColor: colors.borderColor,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    width: "100%",
+    padding: 20,
+    borderRadius: 20,
+  },
   input: {
     backgroundColor: "white",
     borderRadius: 10,
-    padding: 10,
-    width: "100%",
+    padding: 12,
+    marginBottom: 24,
     fontSize: 16,
-    marginBottom: 28,
+  },
+  bodyInput: {
+    height: 200,
+    textAlignVertical: "top",
   },
 });
+
+export default AddBlog;
+

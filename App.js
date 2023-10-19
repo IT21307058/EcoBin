@@ -193,7 +193,6 @@ function StackHomeNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="MainHome" component={Home} />
-
       <Stack.Screen name="BlogHome" component={BlogHome} />
       <Stack.Screen name="AddBlog" component={AddBlog} />
       <Stack.Screen name="OneBlog" component={OneBlog} />

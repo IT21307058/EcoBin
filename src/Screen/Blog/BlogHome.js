@@ -71,7 +71,10 @@ const BlogHome = (props) => {
       <ImageBackground source={imagePath.background} style={styles.imgStyle}>
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.headerStyle}>
+          <TouchableOpacity onPress={() => navigation.navigate('MainHome')}>
             <Image source={imagePath.backarrow} />
+          </TouchableOpacity>
+            {/* <Image source={imagePath.backarrow} /> */}
             <TouchableOpacity>
               <Image source={imagePath.bell} />
             </TouchableOpacity>
