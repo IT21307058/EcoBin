@@ -6,6 +6,8 @@ import imagePath from '../../constants/imagePath';
 import ButtonComp from '../../Components/ButtonComp';
 import colors  from '../../styles/color';
 import { useNavigation } from '@react-navigation/native'
+import { CheckBox } from 'react-native-elements';
+
 
 
 import { db } from '../../../config';
@@ -17,6 +19,8 @@ const AllGoal = () => {
     const navigateToBack = () => {
         navigation.goBack();
     }
+
+    const [checkedItems, setCheckedItems] = useState({});
 
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -47,98 +51,51 @@ const AllGoal = () => {
         });
     }, []);
 
-    const handleSingleItem = (item) => {
+    const handleUpdateItem = (item) => {
         // Navigate to the update page with the item data
         navigation.navigate('OneGoal', { item });
     };
 
+    
+
     const filteredData = data.filter((item) => {
         // Filter the data based on the search query
         const normalizedQuery = searchQuery.toLowerCase();
-        return item.topic.toLowerCase().includes(normalizedQuery) || item.description.toLowerCase().includes(normalizedQuery);
+        return item.name.toLowerCase().includes(normalizedQuery) ;
     });
 
-    // const renderItem = ({ item }) => {
-    //     return (
-    //         <TouchableOpacity onPress={() => handleItemPress(item)}>
-    //             <View style={styles.flatStyle}>
-    //                 <View style={styles.flexView}>
-    //                     <View>
-    //                         {/* <Text style={{
-    //                             fontSize: scale(12),
-    //                             color: colors.blackOpacity80
-    //                         }}>{item?.date}</Text> */}
-    //                         <Text style={{
-    //                             fontSize: scale(12),
-    //                             color: colors.black,
-    //                             fontWeight: 'bold',
-    //                             marginTop: moderateVerticalScale(8)
-    //                         }}>{item?.name}</Text>
 
-    //                         <View style={{
-    //                             flexDirection: 'row',
-    //                             alignItems: 'center'
-    //                         }}>
-    //                             <Image style={{
-    //                                 width: moderateScale(14),
-    //                                 height: moderateScale(14),
-    //                                 tintColor: colors.blackOpacity50
-    //                             }} source={imagePath.bluebell} />
-    //                             <Text style={{
-    //                                 fontSize: scale(12),
-    //                                 color: colors.blackOpacity50,
-    //                             }}> {item?.address}</Text>
-    //                         </View>
-    //                     </View>
-    //                     <Image source={{
-    //                         uri: 'https://cdn.dribbble.com/users/1162077/screenshots/7475318/media/8837a0ae1265548e27a2b2bb3ab1f366.png?compress=1&resize=400x300'
-    //                     }}
-    //                         style={{
-    //                             width: moderateScale(64),
-    //                             height: moderateScale(64),
-    //                             borderRadius: moderateScale(32)
-    //                         }}
-    //                     />
-    //                 </View>
-    //                 <View style={{ ...styles.flexView, marginVertical: moderateVerticalScale(8) }}>
-    //                     <Text style={{
-    //                         fontSize: moderateScale(14),
-    //                         color: colors.blackOpacity50,
-    //                         textTransform: 'uppercase'
 
-    //                     }}>Price</Text>
-    //                     <Text style={{
-    //                         fontSize: scale(14),
-    //                         color: colors.black,
-    //                         fontWeight: 'bold',
-    //                     }}>{item?.price}</Text>
-    //                 </View>
+    const renderItem = ({ item }) => {
+        const isChecked = checkedItems[item.id] || false;
+      
+        const handleCheckboxChange = () => {
+          setCheckedItems((prev) => ({
+            ...prev,
+            [item.id]: !isChecked,
+          }));
+        };
+      
+        return (
+          <TouchableOpacity onPress={() => handleUpdateItem(item)}>
+            <View style={styles.itemContainer}>
+              <View style={{ flexDirection: 'column' }}>
+                <Text style={styles.title}>Goal: {item.name}</Text>
+                <Text style={styles.body}>Date: {item.date}</Text>
+              </View>
+              <CheckBox
+                checked={isChecked}
+                onPress={handleCheckboxChange}
+                containerStyle={styles.checkboxContainer}
+                checkedColor={colors.themeColor}
+              />
+            </View>
+          </TouchableOpacity>
+        );
+      };
+    
 
-    //                 <View style={styles.flexView}>
-    //                     <View style={{ flex: 1 }}>
-    //                         <ButtonComp
-    //                             btnText={'View'}
-    //                             btnStyle={{
-    //                                 backgroundColor: colors.white,
-    //                                 borderWidth: 1,
-    //                                 borderColor: colors.themeColor,
-    //                             }}
-    //                             btnTextStyle={{ color: colors.themeColor }}
-    //                             onPress={() => navigation.navigate('AddPost')}
-    //                         />
-    //                     </View>
-    //                     <View style={{ marginHorizontal: moderateScale(8) }} />
-    //                     <View style={{ flex: 1 }}>
-    //                         <ButtonComp
-    //                             btnText={'Edit'}
-    //                             onPress={() => navigation.navigate('UpdatePost')}
-    //                         />
-    //                     </View>
-    //                 </View>
-    //             </View>
-    //         </TouchableOpacity>
-    //     )
-    // }
+  
 
     return (
         <View style={styles.container}>
@@ -174,6 +131,13 @@ const AllGoal = () => {
                     onChangeText={(text) => setSearchQuery(text)}
                 />
                 <FlatList
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <View style={{ marginBottom: moderateVerticalScale(16) }} />}
+        data={filteredData}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+      />
+                {/* <FlatList
                     showsVerticalScrollIndicator={false}
                     // data={dummyData}
                     ItemSeparatorComponent={() => <View style={{ marginBottom: moderateVerticalScale(16) }} />}
@@ -182,19 +146,13 @@ const AllGoal = () => {
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => handleSingleItem(item)}>
                             <View style={styles.itemContainer}>
-                                {/* <Text style={styles.title}>{item.advertiseType}</Text> */}
-                                <Text style={styles.body}>{item.topic}</Text>
-                                <Text style={styles.body}>{item.description}</Text>
-                                {/* <TouchableOpacity onPress={() => handleUpdate(item)}>
-                                    <Text style={styles.updateButton}>Update</Text>
-                                </TouchableOpacity> */}
-                                {/* <TouchableOpacity onPress={() => handleDelete(item.id)}>
-                                    <Text style={styles.deleteButton}>Delete</Text>
-                                </TouchableOpacity> */}
+                                <CheckBox value={isChecked} onValueChange={handleCheckboxChange} />
+                                <Text style={styles.body}>{item.name}</Text>
+                                
                             </View>
                         </TouchableOpacity>
                     )}
-                />
+                /> */}
                 <TouchableOpacity style={styles.AddButton} onPress={handleImagePress1}>
                     <View>
                         <Image source={imagePath.addbtn} style={styles.AddIconImage} />
@@ -277,6 +235,9 @@ const styles = StyleSheet.create({
         // color:"#fff"
     },
     itemContainer: {
+        flexDirection: 'row', // Align items horizontally
+    justifyContent: 'space-between', // Space between checkbox and text
+    alignItems: 'center', // Center items vertically
         borderBottomWidth: 1,
         borderColor: '#ddd',
         padding: 10,backgroundColor: 'white',
