@@ -45,6 +45,12 @@ import OneBlog from "./src/Screen/Blog/OneBlog"; // Import the OneBlog screen
 import UpdateBlog from "./src/Screen/Blog/UpdateBlog"; // Import the UpdateBlog screen
 import DetailedBlogView from "./src/Screen/Blog/DetailedBlogView"; // Import the DetailedBlogView screen
 
+//Farms
+// import FarmHome from "./src/Screen/FoodSwap/FarmHome"; // Import the FarmHome screen
+// import AddFarm from "./src/Screen/FoodSwap/AddFarm"; // Import the AddFarm screen
+// import OneFarm from "./src/Screen/FoodSwap/OneFarm"; // Import the OneFarm screen
+// import UpdateFarm from "./src/Screen/FoodSwap/UpdateFarm"; // Import the UpdateFarm screen
+
 function TopTabsGroup() {
   return (
     <TopTabs.Navigator>
@@ -193,12 +199,17 @@ function StackHomeNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="MainHome" component={Home} />
+      {/* Blog */}
       <Stack.Screen name="BlogHome" component={BlogHome} />
       <Stack.Screen name="AddBlog" component={AddBlog} />
       <Stack.Screen name="OneBlog" component={OneBlog} />
       <Stack.Screen name="UpdateBlog" component={UpdateBlog} />
       <Stack.Screen name="DetailedBlogView" component={DetailedBlogView} />
-      {/* Insert Here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
+      {/* Farm */}
+      {/* <Stack.Screen name="FarmHome" component={FarmHome} />
+      <Stack.Screen name="AddFarm" component={AddFarm} />
+      <Stack.Screen name="OneFarm" component={OneFarm} />
+      <Stack.Screen name="UpdateFarm" component={UpdateFarm} /> */}
     </Stack.Navigator>
   );
 }

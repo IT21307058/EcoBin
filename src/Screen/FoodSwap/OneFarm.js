@@ -14,26 +14,26 @@ import { db } from '../../../config';
 import { ref, remove } from 'firebase/database';
 import imagePath from '../../constants/imagePath';
 
-const OneBlog = ({ route }) => {
+const OneFarm = ({ route }) => {
   const navigation = useNavigation();
 
   const { item } = route.params; // Get the item data passed from the previous screen
 
   const handleUpdate = (item) => {
     // Navigate to the update page with the item data
-    navigation.navigate('UpdateBlog', { item });
+    navigation.navigate('UpdateFarm', { item });
   };
 
   const handleDelete = (itemId) => {
     // Remove the item from Firebase Realtime Database
-    const blogRef = ref(db, 'blogs/' + itemId);
-    remove(blogRef)
+    const farmRef = ref(db, 'farms/' + itemId);
+    remove(farmRef)
       .then(() => {
-        console.log('Blog deleted successfully');
+        console.log('Farm deleted successfully');
         // You can also update the state to remove the deleted item from the list
       })
       .catch((error) => {
-        console.error('Error deleting blog:', error);
+        console.error('Error deleting farm:', error);
       });
   };
 
@@ -41,20 +41,35 @@ const OneBlog = ({ route }) => {
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.headerStyle}>
-          <TouchableOpacity onPress={() => navigation.navigate('BlogHome')}>
+          <TouchableOpacity onPress={() => navigation.navigate('FarmHome')}>
             <Image source={imagePath.bluearrow} />
           </TouchableOpacity>
           <Image source={imagePath.bluebell} />
         </View>
         <View style={{ marginTop: 50, alignSelf: 'center' }}>
-          <Text style={styles.headerText}>Edit Blog</Text>
+          <Text style={styles.headerText}>Edit Farm</Text>
         </View>
         <View style={styles.card}>
-          <Text style={styles.label}>Topic:</Text>
-          <Text style={styles.value}>{item.topic}</Text>
+          <Text style={styles.label}>Name:</Text>
+          <Text style={styles.value}>{item.name}</Text>
 
-          <Text style={styles.label}>Body:</Text>
-          <Text style={styles.value}>{item.body}</Text>
+          <Text style={styles.label}>Location:</Text>
+          <Text style={styles.value}>{item.location}</Text>
+
+          <Text style={styles.label}>Type:</Text>
+          <Text style={styles.value}>{item.type}</Text>
+
+          <Text style={styles.label}>Area:</Text>
+          <Text style={styles.value}>{item.area}</Text>
+
+          <Text style={styles.label}>Owner:</Text>
+          <Text style={styles.value}>{item.owner}</Text>
+
+          <Text style={styles.label}>Contact Number:</Text>
+          <Text style={styles.value}>{item.contactNumber}</Text>
+
+          <Text style={styles.label}>Status:</Text>
+          <Text style={styles.value}>{item.status}</Text>
 
           <ButtonComp btnText={'Update'} onPress={() => handleUpdate(item)} />
           <Text />
@@ -74,20 +89,13 @@ const OneBlog = ({ route }) => {
   );
 };
 
-export default OneBlog;
+export default OneFarm;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
     justifyContent: 'space-between',
-  },
-  title: {
-    textTransform: 'uppercase',
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: colors.themeColor,
-    marginBottom: 14,
   },
   card: {
     backgroundColor: 'white',

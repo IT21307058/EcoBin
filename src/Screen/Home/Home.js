@@ -60,7 +60,10 @@ const Home = (props) => {
             <Image source={imagePath.reminder} />
             <Text style={styles.cardText}>Reminders</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => navigation.navigate("FarmHome")}
+          >
             <Image source={imagePath.foodswap} />
             <Text style={styles.cardText}>Food Swap</Text>
           </TouchableOpacity>
