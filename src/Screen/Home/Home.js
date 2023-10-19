@@ -51,7 +51,7 @@ const Home = (props) => {
             style={styles.card}
             onPress={() => navigation.navigate("BlogHome")}
           >
-            <Image source={imagePath.goal} />
+            <Image source={imagePath.blog} />
             <Text style={styles.cardText}>Blogs</Text>
           </TouchableOpacity>
         </View>
