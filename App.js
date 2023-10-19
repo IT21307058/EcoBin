@@ -204,6 +204,9 @@ import AddGoal from "./src/Screen/Goal/AddGoal";
 import AllReminder from "./src/Screen/Reminder/AllReminder";
 import UpdateGoal from "./src/Screen/Goal/UpdateGoal";
 import OneGoal from "./src/Screen/Goal/OneGoal";
+import AddReminder from "./src/Screen/Reminder/AddReminder";
+import UpdateReminder from "./src/Screen/Reminder/UpdateReminder";
+import OneReminder from "./src/Screen/Reminder/OneReminder";
 
 import UserAccount from "./src/Screen/UserAccount/UserAccount";
 import Home from "./src/Screen/Home/Home";
@@ -374,6 +377,9 @@ function StackHomeNavigator() {
       <Stack.Screen name="AllReminder" component={AllReminder} />
       <Stack.Screen name="UpdateGoal" component={UpdateGoal} />
       <Stack.Screen name="OneGoal" component={OneGoal} />
+      <Stack.Screen name="AddReminder" component={AddReminder} />
+      <Stack.Screen name="UpdateReminder" component={UpdateReminder} />
+      <Stack.Screen name="OneReminder" component={OneReminder} />
     </Stack.Navigator>
   );
 }
@@ -393,6 +399,7 @@ function StackAdvertiseNavigator() {
       <Stack.Screen name="AddAdvertise" component={AddAdvertise} />
       <Stack.Screen name="UpdateAdvertise" component={UpdateAdvertise} />
       <Stack.Screen name="OneAdvertise" component={OneAdvertise} />
+      
     </Stack.Navigator>
   );
 }

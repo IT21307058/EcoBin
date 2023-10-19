@@ -93,9 +93,9 @@ const AddGoal = () => {
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.headerStyle}>
-        <TouchableOpacity onPress={() => navigation.navigate('AllGoal')}>
-  <Image source={imagePath.backarrow} />
-</TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("AllGoal")}>
+            <Image source={imagePath.backarrow} />
+          </TouchableOpacity>
 
           <Image source={imagePath.bell} />
         </View>
@@ -132,14 +132,13 @@ const AddGoal = () => {
           </View>
 
           <DatePicker
-            mode= "calendar" 
+            mode="calendar"
             selected={date}
             minimumDate={startDate}
             onDateChange={handleChange}
-            style=
-            {{
+            style={{
               width: 300,
-              height:320, // Adjust the height of the calendar
+              height: 320, // Adjust the height of the calendar
               backgroundColor: "white", // Background color of the calendar
             }}
           />
@@ -184,7 +183,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
-    
   },
   inputContainer: {
     marginBottom: 20,

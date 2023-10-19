@@ -15,6 +15,9 @@ const Home = (props) => {
   const navigationToGoals = () => {
     navigation.navigate('AllGoal');
   };
+  const navigationToReminders = () => {
+    navigation.navigate('AllReminder');
+  };
 
   return (
     <View style={styles.container}>
@@ -44,7 +47,7 @@ const Home = (props) => {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={navigationToReminders}>
             <Image source={imagePath.reminder} />
             <Text style={styles.cardText}>Reminders</Text>
           </TouchableOpacity>
