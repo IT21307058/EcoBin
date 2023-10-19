@@ -37,25 +37,28 @@ const CommunityHome = () => {
                 </SafeAreaView>
             </ImageBackground>
             <View style={{
-                marginTop: moderateVerticalScale(14),
+                // marginTop: moderateVerticalScale(5),
                 marginHorizontal: moderateScale(16),
                 flex: 1
             }}>
                 <View style={styles.container1}>
                     {/* Residential Users Card */}
                     <TouchableOpacity style={styles.card} onPress={handleImagePress1}>
+                        <Image source={imagePath.residentialUser} />
                         <Text style={styles.cardTitle}>Residential Users</Text>
                         {/* Add any additional content specific to Residential Users */}
                     </TouchableOpacity>
 
                     {/* Educational Institutes Card */}
                     <TouchableOpacity style={styles.card} onPress={handleImagePress2}>
+                        <Image source={imagePath.educationcampus} />
                         <Text style={styles.cardTitle}>Educational Institutes</Text>
                         {/* Add any additional content specific to Educational Institutes */}
                     </TouchableOpacity>
 
                     {/* Environment Organizations Card */}
                     <TouchableOpacity style={styles.card} onPress={handleImagePress3}>
+                        <Image source={imagePath.environmentalOrg} />
                         <Text style={styles.cardTitle}>Environment Organizations</Text>
                         {/* Add any additional content specific to Environment Organizations */}
                     </TouchableOpacity>
@@ -70,26 +73,27 @@ const styles = StyleSheet.create({
     container1: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 45
+        marginTop: 30
     },
     container: {
         flex: 1,
     },
     card: {
-      backgroundColor: '#FFFFFF',
-      width: '80%',
-      padding: 20,
-      borderRadius: 10,
-      marginBottom: 20,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.3,
-      elevation: 3,
+        backgroundColor: '#FFFFFF',
+        width: '80%',
+        padding: 20,
+        borderRadius: 10,
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        elevation: 3,
+        alignItems:"center"
     },
     cardTitle: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      marginBottom: 10,
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 10,
     },
     imgStyle: {
         height: 200,

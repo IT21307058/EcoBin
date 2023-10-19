@@ -37,10 +37,20 @@ import EnvironmentOrganizationPage from './src/Screen/Community/EnvironmentOrgan
 
 import Login from './src/Screen/Auth/Login';
 import Registeration from './src/Screen/Auth/Registeration';
+import SplashScreen from './src/Screen/Auth/SplashScreen';
 
 function TopTabsGroup() {
   return (
-    <TopTabs.Navigator>
+    <TopTabs.Navigator screenOptions={{
+      tabBarInactiveTintColor: colors.blackOpacity50,
+      tabBaractiveTintColor: colors.themeColor,
+      style: {
+        backgroundColor: colors.themeColor, // Set the background color of the tab bar
+      },
+      indicatorStyle: {
+        backgroundColor: colors.themeColor // Set the indicator (highlight) color
+      },
+    }}>
       <TopTabs.Screen name="main" component={AdvertiseHome} />
       <TopTabs.Screen name="Product" component={OnlyProduct} />
       <TopTabs.Screen name="Program" component={OnlyProgram} />
@@ -68,6 +78,7 @@ function TabNavigator() {
   if (!user) {
     return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='splash' component={SplashScreen}  />
         <Stack.Screen name='Login' component={Login}  />
         <Stack.Screen name='Registeration' component={Registeration}/>
       </Stack.Navigator>

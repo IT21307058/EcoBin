@@ -52,7 +52,7 @@ const UserAccount = () => {
         borderRadius: moderateScale(20),
         paddingHorizontal: moderateScale(24),
         paddingTop: moderateVerticalScale(44),
-        marginTop:40
+        marginTop: 40
       }}>
         {/* <Text style={styles.label}>Advertise Type:</Text>
     <Text style={styles.value}>{advertiseType}</Text> */}
@@ -67,14 +67,17 @@ const UserAccount = () => {
         <Text style={styles.value}>{name.email}</Text>
 
         <ButtonComp
-            btnText={'Log Out'}
-            onPress={() => { firebase.auth().signOut() }}
+          btnText={'Log Out'}
+          onPress={() => { firebase.auth().signOut() }}
         />
 
         {/* <TouchableOpacity onPress={() => { firebase.auth().signOut() }} style={styles.button}>
           <Text style={{ fontWeight: 'bold', fontSize: 22, color:colors.white }}>Sign Out</Text>
         </TouchableOpacity> */}
       </View>
+      <TouchableOpacity>
+        <Text style={{ color: "#FFD700", alignSelf: "center", marginTop: 20, fontSize: 20, fontWeight: "bold" }}>Become a Premium Member</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
