@@ -8,28 +8,33 @@ import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'reac
 import ButtonComp from '../../Components/ButtonComp';
 
 
-const UserAccount = () => {
 
-  const [name, setName] = useState('')
+const UserAccount = () => {
+  const [name, setName] = useState("");
 
   useEffect(() => {
-    firebase.firestore().collection('users')
-      .doc(firebase.auth().currentUser.uid).get()
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .get()
       .then((snapshot) => {
         if (snapshot.exists) {
-          setName(snapshot.data())
+          setName(snapshot.data());
         } else {
-          console.log('User does not exist')
+          console.log("User does not exist");
         }
-      })
-  }, [])
+      });
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
+
       <ImageBackground
         source={imagePath.background}
         style={styles.imgStyle}
       >
+
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.headerStyle}>
             <TouchableOpacity>
@@ -40,6 +45,7 @@ const UserAccount = () => {
           <Text style={styles.AdvertiseTextStyle}>User Account</Text>
         </SafeAreaView>
       </ImageBackground>
+
 
       <View style={{
         backgroundColor: colors.borderColor,
@@ -56,6 +62,7 @@ const UserAccount = () => {
       }}>
         {/* <Text style={styles.label}>Advertise Type:</Text>
     <Text style={styles.value}>{advertiseType}</Text> */}
+
 
         <Text style={styles.label}>First Name:</Text>
         <Text style={styles.value}>{name.firstName}</Text>
@@ -79,23 +86,26 @@ const UserAccount = () => {
         <Text style={{ color: "#FFD700", alignSelf: "center", marginTop: 20, fontSize: 20, fontWeight: "bold" }}>Become a Premium Member</Text>
       </TouchableOpacity>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default UserAccount
+export default UserAccount;
 
 const styles = StyleSheet.create({
   container: {
+
     flex: 1
   },
   imgStyle: {
     height: 200,
     width: '100%',
+
     // justifyContent: 'center',
     // alignItems: 'center'
   },
   AdvertiseTextStyle: {
     fontSize: scale(25),
+
     color: 'white',
     fontWeight: 'bold',
     marginLeft: 100
@@ -118,6 +128,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     padding: moderateScale(16),
     borderRadius: moderateScale(4),
+
     margin: 2
   },
   flexView: {
@@ -130,6 +141,7 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: "#fff",
     borderRadius: 100,
+
     display: 'flex',
     bottom: 0,
     right: 0,
@@ -144,6 +156,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -154,6 +167,7 @@ const styles = StyleSheet.create({
     // color:"#fff"
   },
   itemContainer: {
+
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
@@ -165,12 +179,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
+
     fontWeight: 'bold',
     color: colors.themeColor
   },
   body: {
     fontSize: 15,
     marginTop: 8,
+
     color: colors.blackOpacity80
   },
   searchInput: {
@@ -181,6 +197,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 10,
     fontSize: 16,
+
     backgroundColor: 'white', // Background color
     marginBottom: 28,
     alignSelf: "center"
@@ -199,14 +216,15 @@ const styles = StyleSheet.create({
     width: 400,
     fontSize: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#000',
+    borderBottomColor: "#000",
     marginBottom: 10,
-    textAlign: "center"
+    textAlign: "center",
   },
   button: {
     marginTop: 50,
     height: 70,
     width: 250,
+
     backgroundColor: '#026efd',
     alignItems: 'center',
     justifyContent: 'center',
@@ -220,5 +238,6 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 20,
     marginBottom: 10,
+
   }
 })
