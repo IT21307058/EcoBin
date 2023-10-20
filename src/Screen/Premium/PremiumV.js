@@ -28,7 +28,16 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { remove } from "firebase/database";
 import PremiumBtn from "../../Components/PremiumBtn";
 
+
 const PremiumV = () => {
+  
+  const navigation = useNavigation();
+
+  const handleNavigateToSubscription = () => {
+    navigation.navigate("Subscription");
+  };
+
+
   return (
     <View style={styles.container}>
       <ImageBackground source={imagePath.background} style={styles.imgStyle}>
@@ -37,7 +46,6 @@ const PremiumV = () => {
             <Image source={imagePath.backarrow} />
             <Image source={imagePath.bell} />
           </View>
-          <Text style={styles.AdvertiseTextStyle}> Premium</Text>
           <View style={styles.crownContainer}>
             <Image source={imagePath.crown} style={styles.crownImage} />
           </View>
@@ -63,6 +71,7 @@ const PremiumV = () => {
           <Text style={styles.fontBStyle}> Upgrade to Premium </Text>
           <PremiumBtn
           btnText={'Rs.400/Month'}
+          onPress={handleNavigateToSubscription}
           />
         </SafeAreaView>
       </ImageBackground>
@@ -108,7 +117,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 100,
+    marginTop: 90,
   },
   crownImage: {
     resizeMode: "contain", // You can adjust this based on your requirements
