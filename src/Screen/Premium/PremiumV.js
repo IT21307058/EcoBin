@@ -8,7 +8,7 @@ import {
   Alert,
   Text,
   TouchableOpacity,
-  FlatList
+  FlatList,
 } from "react-native";
 import { ImageBackground } from "react-native";
 import { db } from "../../../config";
@@ -41,44 +41,25 @@ const PremiumV = () => {
             <Image source={imagePath.crown} style={styles.crownImage} />
           </View>
           <Text style={styles.topicStyle}>Premium Version</Text>
-      <View style={styles.bulletContainer}>
-        <View style={styles.bullet}>
-        <Icon
-                      name="check"
-                      size={24}
-                      color="blue"
-                      style={styles.icon}
-                    />
-          <Text style={styles.bulletText}> Post Advertisement</Text>
-        </View>
-        <View style={styles.bullet}>
-        <Icon
-                      name="check"
-                      size={24}
-                      color="blue"
-                      style={styles.icon}
-                    />
-          <Text style={styles.bulletText}> Create Events</Text>
-        </View>
-        <View style={styles.bullet}>
-        <Icon
-                      name="check"
-                      size={24}
-                      color="blue"
-                      style={styles.icon}
-                    />
-          <Text style={styles.bulletText}> Create Courses</Text>
-        </View>
-        <View style={styles.bullet}>
-        <Icon
-                      name="check"
-                      size={24}
-                      color="blue"
-                      style={styles.icon}
-                    />
-          <Text style={styles.bulletText}> Food Swap</Text>
-        </View>
-      </View>
+          <View style={styles.bulletContainer}>
+            <View style={styles.bullet}>
+              <Icon name="check" size={24} color="blue" style={styles.icon} />
+              <Text style={styles.bulletText}> Post Advertisement</Text>
+            </View>
+            <View style={styles.bullet}>
+              <Icon name="check" size={24} color="blue" style={styles.icon} />
+              <Text style={styles.bulletText}> Create Events</Text>
+            </View>
+            <View style={styles.bullet}>
+              <Icon name="check" size={24} color="blue" style={styles.icon} />
+              <Text style={styles.bulletText}> Create Courses</Text>
+            </View>
+            <View style={styles.bullet}>
+              <Icon name="check" size={24} color="blue" style={styles.icon} />
+              <Text style={styles.bulletText}> Food Swap</Text>
+            </View>
+          </View>
+          <Text style={styles.fontBStyle}> Upgrade to Premium </Text>
         </SafeAreaView>
       </ImageBackground>
     </View>
@@ -87,24 +68,30 @@ const PremiumV = () => {
 
 const styles = StyleSheet.create({
   topicStyle: {
-    marginTop: 155,
+    marginTop: 130,
     fontSize: 35, // Adjust the font size
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  fontBStyle: {
+    fontSize: 30, // Adjust the font size
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 10,
   },
   bulletContainer: {
     marginTop: 20, // Adjust the margin as needed
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
     marginLeft: 70,
   },
   bullet: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 5, // Adjust the margin as needed
   },
   bulletText: {
     marginRight: 5, // Adjust the margin as needed
-    fontSize: 16, // Adjust the font size
+    fontSize: 20, // Adjust the font size
   },
   Card: {
     marginTop: 160,
