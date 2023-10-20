@@ -178,14 +178,6 @@ function StackAdvertiseNavigator() {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name='CommunityHome' component={CommunityHome} />
-      <Stack.Screen name='EducationalUserPage' component={EducationalUserPage} />
-      <Stack.Screen name='EnvironmentOrganizationPage' component={EnvironmentOrganizationPage} />
-      <Stack.Screen name='AllCommunity' component={AllCommunity} />
-      <Stack.Screen name='AddPost' component={AddPost} />
-      <Stack.Screen name='UpdatePost' component={UpdatePost} />
-      <Stack.Screen name='OnePost' component={OnePost} />
-      <Stack.Screen name='FeedbackPage' component={FeedbackPage} /> */}
       <Stack.Screen name='AdvertiseHome' component={TopTabsGroup} />
       <Stack.Screen name='AddAdvertise' component={AddAdvertise} />
       <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
