@@ -26,6 +26,7 @@ import { Card } from "react-native-paper";
 import Btn from "../../Components/Btn";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { remove } from "firebase/database";
+import PremiumBtn from "../../Components/PremiumBtn";
 
 const PremiumV = () => {
   return (
@@ -60,6 +61,9 @@ const PremiumV = () => {
             </View>
           </View>
           <Text style={styles.fontBStyle}> Upgrade to Premium </Text>
+          <PremiumBtn
+          btnText={'Rs.400/Month'}
+          />
         </SafeAreaView>
       </ImageBackground>
     </View>

@@ -7,4 +7,5 @@ export default {
     borderColor: 'rgba(0,0,0,0.08)',
     white:'#FFFFFF',
     green: '#228B22',
+    lightBlue: '#40B5AD'
 }
