@@ -12,6 +12,15 @@ import { useNavigation } from '@react-navigation/native'
 const Home = (props) => {
   const navigation = useNavigation();
 
+  const handleNavigateToAllEvents = () => {
+    navigation.navigate('AllEvents');
+  }
+
+  const handleNavigateToPremium = () => {
+    navigation.navigate('PremiumVersion');
+    console.log('Navigated to Premium');
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -30,19 +39,19 @@ const Home = (props) => {
       </ImageBackground>
       <View style={styles.cardContainer}>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={handleNavigateToAllEvents}>
             <Image source={imagePath.event} />
             <Text style={styles.cardText}>Events</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} >
             <Image source={imagePath.goal} />
             <Text style={styles.cardText}>Goals</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={handleNavigateToPremium}>
             <Image source={imagePath.reminder} />
-            <Text style={styles.cardText}>Reminders</Text>
+            <Text style={styles.cardText}>Premium</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.card}>
             <Image source={imagePath.foodswap} />

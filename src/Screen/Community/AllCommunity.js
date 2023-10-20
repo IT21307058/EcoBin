@@ -138,12 +138,7 @@ const AllCommunity = () => {
                 marginHorizontal: moderateScale(16),
                 flex: 1
             }}>
-                {/* <FlatList
-                    showsVerticalScrollIndicator={false}
-                    // data={dummyData}
-                    renderItem={renderItem}
-                    ItemSeparatorComponent={() => <View style={{ marginBottom: moderateVerticalScale(16) }} />}
-                /> */}
+
                 <TextInput
                     style={styles.searchInput}
                     placeholder="Search..."
@@ -159,14 +154,6 @@ const AllCommunity = () => {
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => handleSingleItem(item)}>
                             <View style={styles.itemContainer}>
-                                {/* <Text style={styles.title}>{item.advertiseType}</Text> */}
-                                {/* <Text style={styles.title}>{item.topic}</Text>
-                                <Text style={styles.body}>{item.description}</Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
-                                    <Image source={imagePath.roundcomment} style={styles.AddIconImage} />
-                                    <Text style={styles.date}>{formatDate(item.date)}</Text>
-                                </View> */}
-                                {/* <View style={{ flex: 1 }}> */}
                                 <View>
                                     <Text style={styles.title}>{item.topic}</Text>
                                     <Text style={styles.body}>{item.description}</Text>
@@ -177,23 +164,6 @@ const AllCommunity = () => {
                                     </TouchableOpacity>
                                     <Text style={styles.date}>{formatDate(item.date)}</Text>
                                 </View>
-                                {/* </View> */}
-                                {/* <Text style={styles.date}>{formatDate(item.date)}</Text> */}
-                                {/* <View>
-                                    <TouchableOpacity onPress={() => handleLike(item)}>
-                                        <Text name="thumbs-up" size={20} color="blue">Like</Text>
-                                    </TouchableOpacity>
-                                    <Text>{item.likes || 0}</Text>
-                                </View> */}
-                                {/* <TouchableOpacity onPress={() => handleLike(item)}>
-                                    <Text style={styles.likeButton}>Like ({item.likes})</Text>
-                                </TouchableOpacity> */}
-                                {/* <TouchableOpacity onPress={() => handleUpdate(item)}>
-                                    <Text style={styles.updateButton}>Update</Text>
-                                </TouchableOpacity> */}
-                                {/* <TouchableOpacity onPress={() => handleDelete(item.id)}>
-                                    <Text style={styles.deleteButton}>Delete</Text>
-                                </TouchableOpacity> */}
                             </View>
                         </TouchableOpacity>
                     )}
