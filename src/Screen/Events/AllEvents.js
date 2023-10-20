@@ -67,7 +67,7 @@ const AllEvents = () => {
           data={events}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Card style={styles.orderItem}>
+            <Card style={styles.Card}>
               <TouchableOpacity onPress={() => handleEventPress(item)}>
                 <Text style={styles.title}>{item.eventName}</Text>
                 <Text style={styles.body}>{item.location}</Text>
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     color: colors.blackOpacity50,
   },
   commentcontainer: {},
-  orderItem: {
+  Card: {
     borderWidth: 1,
     borderColor: "gray",
     padding: 16,

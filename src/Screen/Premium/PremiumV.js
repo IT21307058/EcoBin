@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from "react";
-import {SafeAreaView,View,StyleSheet,Image,TextInput,Alert,Text,TouchableOpacity,FlatList,} from "react-native";
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Image,
+  TextInput,
+  Alert,
+  Text,
+  TouchableOpacity,
+  FlatList
+} from "react-native";
 import { ImageBackground } from "react-native";
 import { db } from "../../../config";
 import { useNavigation } from "@react-navigation/native";
 import { onValue } from "firebase/database";
 import imagePath from "../../constants/imagePath";
 import colors from "../../styles/color";
-import {moderateScale,moderateVerticalScale,scale,} from "react-native-size-matters";
+import {
+  moderateScale,
+  moderateVerticalScale,
+  scale,
+} from "react-native-size-matters";
 import { ref, set, push } from "firebase/database";
 import { Card } from "react-native-paper";
 import Btn from "../../Components/Btn";
@@ -16,35 +30,97 @@ import { remove } from "firebase/database";
 const PremiumV = () => {
   return (
     <View style={styles.container}>
-  <ImageBackground source={imagePath.background} style={styles.imgStyle}>
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.headerStyle}>
-        <Image source={imagePath.backarrow} />
-        <Image source={imagePath.bell} />
+      <ImageBackground source={imagePath.background} style={styles.imgStyle}>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.headerStyle}>
+            <Image source={imagePath.backarrow} />
+            <Image source={imagePath.bell} />
+          </View>
+          <Text style={styles.AdvertiseTextStyle}> Premium</Text>
+          <View style={styles.crownContainer}>
+            <Image source={imagePath.crown} style={styles.crownImage} />
+          </View>
+          <Text style={styles.topicStyle}>Premium Version</Text>
+      <View style={styles.bulletContainer}>
+        <View style={styles.bullet}>
+        <Icon
+                      name="check"
+                      size={24}
+                      color="blue"
+                      style={styles.icon}
+                    />
+          <Text style={styles.bulletText}> Post Advertisement</Text>
+        </View>
+        <View style={styles.bullet}>
+        <Icon
+                      name="check"
+                      size={24}
+                      color="blue"
+                      style={styles.icon}
+                    />
+          <Text style={styles.bulletText}> Create Events</Text>
+        </View>
+        <View style={styles.bullet}>
+        <Icon
+                      name="check"
+                      size={24}
+                      color="blue"
+                      style={styles.icon}
+                    />
+          <Text style={styles.bulletText}> Create Courses</Text>
+        </View>
+        <View style={styles.bullet}>
+        <Icon
+                      name="check"
+                      size={24}
+                      color="blue"
+                      style={styles.icon}
+                    />
+          <Text style={styles.bulletText}> Food Swap</Text>
+        </View>
       </View>
-      <Text style={styles.AdvertiseTextStyle}> Premium</Text>
-      <View style={styles.crownContainer}>
-        <Image source={imagePath.crown} style={styles.crownImage} />
-      </View>
-    </SafeAreaView>
-  </ImageBackground>
-</View>
-
-
-
+        </SafeAreaView>
+      </ImageBackground>
+    </View>
   );
-}
-
+};
 
 const styles = StyleSheet.create({
+  topicStyle: {
+    marginTop: 155,
+    fontSize: 35, // Adjust the font size
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  bulletContainer: {
+    marginTop: 20, // Adjust the margin as needed
+    alignItems: 'flex-start',
+    marginLeft: 70,
+  },
+  bullet: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5, // Adjust the margin as needed
+  },
+  bulletText: {
+    marginRight: 5, // Adjust the margin as needed
+    fontSize: 16, // Adjust the font size
+  },
+  Card: {
+    marginTop: 160,
+    borderWidth: 1,
+    borderColor: "gray",
+    padding: 16,
+    marginBottom: 16,
+  },
   crownContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 100,
   },
   crownImage: {
-    resizeMode: 'contain', // You can adjust this based on your requirements
+    resizeMode: "contain", // You can adjust this based on your requirements
     width: 300, // Adjust the width as needed
     height: 300, // Adjust the height as needed
     marginTop: 30,
