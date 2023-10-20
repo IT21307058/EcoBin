@@ -34,6 +34,7 @@ const AddPost = () => {
             topic: topic,
             description: description,
             date: formattedDate,
+            likes: 0,
         })
             .then(() => {
                 console.log('Data added successfully');

@@ -21,4 +21,7 @@ export default {
     roundcomment: require('../assests/images/round-shape.png'),
     white_logo: require('../assests/images/ecobin_white_logo.png'),
     green_round: require('../assests/images/green_round.png'),
+    like_community: require('../assests/images/like.png'),
+    like_green: require('../assests/images/like_green.png'),
+    home_image: require('../assests/images/home_image.png'),
 }

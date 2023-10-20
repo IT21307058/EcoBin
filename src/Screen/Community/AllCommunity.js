@@ -16,7 +16,8 @@ const AllCommunity = () => {
 
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const DESCRIPTION_CHARACTER_LIMIT = 20;
+    const DESCRIPTION_CHARACTER_LIMIT = 25;
+    const [likedItems, setLikedItems] = useState([]);
 
     // const handleItemPress = (item) => {
     //     // Navigate to the desired page with the item data
@@ -73,16 +74,7 @@ const AllCommunity = () => {
         });
     }, []);
 
-    // const handleLike = (item) => {
-    //     // Ensure 'likes' is a valid number or initialize it with 0
-    //     const newLikes = isNaN(item.likes) ? 0 : item.likes + 1;
 
-    //     // Update the like count for the post in the database
-    //     const postRef = ref(db, `community/${item.id}`);
-    //     set(postRef, {
-    //         likes: newLikes,
-    //     });
-    // };
 
     const handleSingleItem = (item) => {
         // Navigate to the update page with the item data
@@ -97,26 +89,37 @@ const AllCommunity = () => {
     const filteredData = data.filter((item) => {
         // Filter the data based on the search query
         const normalizedQuery = searchQuery.toLowerCase();
-        // return item.topic.toLowerCase().includes(normalizedQuery) || item.description.toLowerCase().includes(normalizedQuery);
-        // Check if 'item.communityType', 'item.topic', and 'item.description' exist before using toLowerCase()
-        // const communityType = item.communityType ? item.communityType.toLowerCase() : '';
-        // const topic = item.topic ? item.topic.toLowerCase() : '';
-        // const description = item.description ? item.description.toLowerCase() : '';
-
-        // return (
-        //     communityType === 'residential users' &&
-        //     (communityType.includes(normalizedQuery) ||
-        //         topic.includes(normalizedQuery) ||
-        //         description.includes(normalizedQuery))
-        // );
 
         return (
             item.communityType.toLowerCase() === 'residential users' &&
-            (item.communityType.toLowerCase().includes(normalizedQuery) ||
-                item.topic.toLowerCase().includes(normalizedQuery) ||
+            (item.topic.toLowerCase().includes(normalizedQuery) ||
                 item.description.toLowerCase().includes(normalizedQuery))
         );
     });
+
+    const handleLike = (item) => {
+        const itemIndex = likedItems.indexOf(item.id);
+
+        if (itemIndex !== -1) {
+            // Item is already liked, remove it from the likedItems
+            setLikedItems(likedItems.filter((id) => id !== item.id));
+
+            // Decrement the like count for the selected post
+            const updatedLikes = item.likes ? item.likes - 1 : 0;
+            set(ref(db, `community/${item.id}/likes`), updatedLikes);
+        } else {
+            // Item is not liked, add it to the likedItems
+            setLikedItems([...likedItems, item.id]);
+
+            // Increment the like count for the selected post
+            const updatedLikes = item.likes ? item.likes + 1 : 1;
+            set(ref(db, `community/${item.id}/likes`), updatedLikes);
+        }
+
+        // Increment the like count for the selected post
+        // const updatedLikes = item.likes ? item.likes + 1 : 1;
+        // set(ref(db, `community/${item.id}/likes`), updatedLikes);
+    };
 
 
 
@@ -183,30 +186,35 @@ const AllCommunity = () => {
                                             </Text>
                                         )}
                                     </Text>
+                                    <View style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        marginTop: 5
+                                    }}>
+                                        <TouchableOpacity onPress={() => handleLike(item)} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            marginRight: 20
+                                        }}>
+                                            <Image source={likedItems.includes(item.id) ? imagePath.like_green : imagePath.like_community} style={styles.commentcontainer} />
+                                            <Text style={styles.likeButton}>({item.likes || 0})</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => handleFeedback(item)} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                        }}>
+                                            <Image source={imagePath.roundcomment} style={styles.commentcontainer} />
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                                 <View style={{ alignItems: 'flex-end' }}>
-                                    <TouchableOpacity onPress={() => handleFeedback(item)}>
-                                        <Image source={imagePath.roundcomment} style={styles.commentcontainer} />
-                                    </TouchableOpacity>
+
                                     <Text style={styles.date}>{formatDate(item.date)}</Text>
+                                    {/* <TouchableOpacity onPress={() => handleLike(item)}>
+                                        <Text style={styles.likeButton}>Like ({item.likes || 0})</Text>
+                                    </TouchableOpacity> */}
                                 </View>
-                                {/* </View> */}
-                                {/* <Text style={styles.date}>{formatDate(item.date)}</Text> */}
-                                {/* <View>
-                                    <TouchableOpacity onPress={() => handleLike(item)}>
-                                        <Text name="thumbs-up" size={20} color="blue">Like</Text>
-                                    </TouchableOpacity>
-                                    <Text>{item.likes || 0}</Text>
-                                </View> */}
-                                {/* <TouchableOpacity onPress={() => handleLike(item)}>
-                                    <Text style={styles.likeButton}>Like ({item.likes})</Text>
-                                </TouchableOpacity> */}
-                                {/* <TouchableOpacity onPress={() => handleUpdate(item)}>
-                                    <Text style={styles.updateButton}>Update</Text>
-                                </TouchableOpacity> */}
-                                {/* <TouchableOpacity onPress={() => handleDelete(item.id)}>
-                                    <Text style={styles.deleteButton}>Delete</Text>
-                                </TouchableOpacity> */}
+
                             </View>
                         </TouchableOpacity>
                     )}
@@ -329,7 +337,7 @@ const styles = StyleSheet.create({
         color: colors.blackOpacity50
     },
     commentcontainer: {
-        height: 40,
-        width: 40
+        height: 25,
+        width: 25
     }
 })
