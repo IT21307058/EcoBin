@@ -1,16 +1,6 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  SafeAreaView,
-  TextInput,
-  FlatList,
-  Button,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import React, { useState } from "react";
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity, Alert } from 'react-native'
+import React, { useState } from 'react'
+
 // import React from 'react'
 import {
   scale,
@@ -42,26 +32,42 @@ const AddAdvertise = () => {
   // Format the date as a string (you can customize the format)
   const formattedDate = currentDate.toISOString();
 
-  const dataAddOn = () => {
-    // Use the Firebase Realtime Database reference to push (add) data
-    const advertiseRef = ref(db, "advertise");
-    const newAdvertiseRef = push(advertiseRef); // Generates a unique ID
-    set(newAdvertiseRef, {
-      advertiseType: advertiseType,
-      topic: topic,
-      description: description,
-      date: formattedDate,
-    })
-      .then(() => {
-        console.log("Data added successfully");
-        setAdvertiseType("");
-        setTopic("");
-        setDescription("");
-      })
-      .catch((error) => {
-        console.error("Error adding data:", error);
-      });
-  };
+
+    const dataAddOn = () => {
+        // Use the Firebase Realtime Database reference to push (add) data
+        const advertiseRef = ref(db, 'advertise');
+        const newAdvertiseRef = push(advertiseRef); // Generates a unique ID
+        set(newAdvertiseRef, {
+            advertiseType: advertiseType,
+            topic: topic,
+            description: description,
+            date: formattedDate,
+        })
+            .then(() => {
+                console.log('Data added successfully');
+                setAdvertiseType('');
+                setTopic('');
+                setDescription('');
+                Alert.alert(
+                    'Advertise added Successfully',
+                    null, // You can pass null for the message if you don't want a message
+                    [
+                      {
+                        text: 'OK',
+                        // onPress: () => navigation.navigate('CommunityHome'), // Reset dataAdded state
+                        style: 'cancel', // You can use 'destructive' or 'default' for different styles
+                      },
+                    ],
+                    {
+                      
+                    }
+                  );
+            })
+            .catch((error) => {
+                console.error('Error adding data:', error);
+            });
+    };
+
 
   return (
     <View style={styles.container}>

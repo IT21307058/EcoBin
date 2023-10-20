@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 import ButtonComp from '../../Components/ButtonComp';
 import { useNavigation } from '@react-navigation/native'
@@ -28,6 +28,20 @@ const OneAdvertise = ({ route }) => {
         remove(advertiseRef)
             .then(() => {
                 console.log('Advertise deleted successfully');
+                Alert.alert(
+                    'Advertise deleted Successfully',
+                    null, // You can pass null for the message if you don't want a message
+                    [
+                      {
+                        text: 'OK',
+                        onPress: () => navigation.navigate('AdvertiseHome'), // Reset dataAdded state
+                        style: 'cancel', // You can use 'destructive' or 'default' for different styles
+                      },
+                    ],
+                    {
+                    
+                    }
+                  );
                 // You can also update the state to remove the deleted item from the list
             })
             .catch((error) => {

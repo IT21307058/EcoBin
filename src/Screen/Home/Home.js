@@ -68,6 +68,17 @@ const Home = (props) => {
             <Text style={styles.cardText}>Food Swap</Text>
           </TouchableOpacity>
         </View>
+
+        <TouchableOpacity>
+          <ImageBackground
+            source={imagePath.home_image} // Add your background image source here
+            style={styles.cardBackgroundImage}
+          >
+            {/* <View style={styles.overlay} /> */}
+            <Text style={styles.cardText1}>Learn From The Experts For Effective</Text>
+          </ImageBackground>
+        </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -123,8 +134,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+
   cardContainer: {
     marginTop: 50,
-    paddingHorizontal: 40,
+    paddingHorizontal: 40
   },
-});
+  cardBackgroundImage: {
+    width: '100%', // Makes the image span the whole width of the card container
+    height: 200, // Adjust the height as needed
+    justifyContent: 'center',
+    alignItems: 'center',
+    resizeMode: 'cover',
+  },
+  cardText1: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'white', // Set the text color
+    // position: 'absolute',
+    // top: '0%',
+    // left: '0%',
+    // transform: [{ translateX: -50 }, { translateY: -10 }],
+  }
+})
