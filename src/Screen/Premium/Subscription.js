@@ -35,8 +35,25 @@ const Subscription = () => {
   const [cvv, setCvv] = useState("");
 
   const handleCheckout = () => {
-    // Handle the checkout logic here
-    // You can access the entered values in the `cardNumber`, `expiryDate`, `nameOnCard`, and `cvv` variables
+    const subscriptionRef = ref(db, 'subscription');
+        const newsubscriptionRef = push(subscriptionRef);
+
+        set(newsubscriptionRef, {
+            cardNumber : cardNumber,
+            expiryDate : expiryDate,
+            nameOnCard : nameOnCard,
+            cvv : cvv,
+        })
+        .then(() => {
+            console.log('Subscription added successfully');
+            setCardNumber('');
+            setExpiryDate('');
+            setNameOnCard('');
+            setCvv('');
+        })
+        .catch((error) => {
+            console.error('Error adding data:', error);
+        })
   };
 
   return (
