@@ -34,30 +34,6 @@ const AllCommunity = () => {
         navigation.navigate('AddPost');
     };
 
-    // const handleLike = (item) => {
-    //     const postId = item.id; // Get the unique post identifier
-
-    //     // Create a reference for the likes count of the specific post in a separate database (communityLikes)
-    //     const communityLikesRef = ref(db, `communityLikes/${item.id}`);
-
-    //     // Get the current number of likes for the post
-    //     const currentLikes = item.likes || 0;
-
-    //     // Increment the likes count by 1
-    //     const newLikes = currentLikes + 1;
-
-    //     // Update the likes count for the specific post in the communityLikes database
-    //     set(communityLikesRef, newLikes)
-    //         .then(() => {
-    //             // Successfully updated the likes count for the post
-    //             console.log(`Likes updated successfully for post ${postId}`);
-    //         })
-    //         .catch((error) => {
-    //             // Handle the error, if any
-    //             console.error(`Error updating likes for post ${postId}:`, error);
-    //         });
-    // };
-
     useEffect(() => {
         // Use the Firebase Realtime Database reference to listen for data changes
         const communityRef = ref(db, 'community');
@@ -202,9 +178,17 @@ const AllCommunity = () => {
                                         <TouchableOpacity onPress={() => handleFeedback(item)} style={{
                                             flexDirection: 'row',
                                             alignItems: 'center',
+                                            marginRight: 25
                                         }}>
                                             <Image source={imagePath.roundcomment} style={styles.commentcontainer} />
                                         </TouchableOpacity>
+ 
+                                        {/* <TouchableOpacity onPress={share} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                        }}>
+                                            <Image source={imagePath.community_share} style={styles.commentcontainer} />
+                                        </TouchableOpacity> */}
                                     </View>
                                 </View>
                                 <View style={{ alignItems: 'flex-end' }}>

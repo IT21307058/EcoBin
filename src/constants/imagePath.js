@@ -24,4 +24,5 @@ export default {
     like_community: require('../assests/images/like.png'),
     like_green: require('../assests/images/like_green.png'),
     home_image: require('../assests/images/home_image.png'),
+    community_share: require('../assests/images/share.png'),
 }
