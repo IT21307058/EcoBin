@@ -18,4 +18,5 @@ export default {
     educationcampus: require('../assests/images/educationcampus.png'),
     environmentalOrg: require('../assests/images/environmental.jpg'),
     roundcomment: require('../assests/images/round-shape.png'),
+    crown : require('../assests/images/crown.png'),
 }

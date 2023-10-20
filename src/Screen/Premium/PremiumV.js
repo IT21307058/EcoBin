@@ -16,22 +16,39 @@ import { remove } from "firebase/database";
 const PremiumV = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={imagePath.background} style={styles.imgStyle}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <View style={styles.headerStyle}>
-            <Image source={imagePath.backarrow} />
-            <Image source={imagePath.bell} />
-          </View>
-          <Text style={styles.AdvertiseTextStyle}> Events</Text>
-          <Image source={imagePath.goal} />
-        </SafeAreaView>
-      </ImageBackground>
-    </View>
+  <ImageBackground source={imagePath.background} style={styles.imgStyle}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.headerStyle}>
+        <Image source={imagePath.backarrow} />
+        <Image source={imagePath.bell} />
+      </View>
+      <Text style={styles.AdvertiseTextStyle}> Premium</Text>
+      <View style={styles.crownContainer}>
+        <Image source={imagePath.crown} style={styles.crownImage} />
+      </View>
+    </SafeAreaView>
+  </ImageBackground>
+</View>
+
+
+
   );
 }
 
 
 const styles = StyleSheet.create({
+  crownContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 100,
+  },
+  crownImage: {
+    resizeMode: 'contain', // You can adjust this based on your requirements
+    width: 300, // Adjust the width as needed
+    height: 300, // Adjust the height as needed
+    marginTop: 30,
+  },
   container: {
     flex: 1,
   },
