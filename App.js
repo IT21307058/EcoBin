@@ -228,7 +228,7 @@ import Registeration from './src/Screen/Auth/Registeration';
 import AddEvent from './src/Screen/Events/AddEvent';
 import AllEvents from './src/Screen/Events/AllEvents';
 import UpdateEvent from './src/Screen/Events/UpdateEvent';
-import PremiumVersion from './src/Screen/Premium/PremiumVersion';
+import PremiumV from './src/Screen/Premium/PremiumV';
 
 function TopTabsGroup() {
   return (
@@ -352,10 +352,7 @@ function StackHomeNavigator() {
       <Stack.Screen name='AllEvents' component={AllEvents} />
       <Stack.Screen name='AddEvent' component={AddEvent} />
       <Stack.Screen name='UpdateEvent' component={UpdateEvent} />
-      <Stack.Screen name='PremiumVersion' component={PremiumVersion} />
-
-
-
+      <Stack.Screen name='PremiumV' component={PremiumV} />
 
     </Stack.Navigator>
   )

@@ -16,11 +16,9 @@ const Home = (props) => {
     navigation.navigate('AllEvents');
   }
 
-  const handleNavigateToPremium = () => {
-    navigation.navigate('PremiumVersion');
-    console.log('Navigated to Premium');
+  const handleNavigateToPremiumV = () => {
+    navigation.navigate('PremiumV');
   }
-
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -49,7 +47,7 @@ const Home = (props) => {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.card} onPress={handleNavigateToPremium}>
+          <TouchableOpacity style={styles.card} onPress={handleNavigateToPremiumV}>
             <Image source={imagePath.reminder} />
             <Text style={styles.cardText}>Premium</Text>
           </TouchableOpacity>
