@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 // import React from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
@@ -41,6 +41,20 @@ const AddAdvertise = () => {
                 setAdvertiseType('');
                 setTopic('');
                 setDescription('');
+                Alert.alert(
+                    'Advertise added Successfully',
+                    null, // You can pass null for the message if you don't want a message
+                    [
+                      {
+                        text: 'OK',
+                        // onPress: () => navigation.navigate('CommunityHome'), // Reset dataAdded state
+                        style: 'cancel', // You can use 'destructive' or 'default' for different styles
+                      },
+                    ],
+                    {
+                      
+                    }
+                  );
             })
             .catch((error) => {
                 console.error('Error adding data:', error);

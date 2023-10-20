@@ -38,6 +38,29 @@ const UpdateAdvertise = ({ route }) => {
         })
             .then(() => {
                 console.log('Data updated successfully');
+                Alert.alert(
+                    'Advertise updated Successfully',
+                    null, // You can pass null for the message if you don't want a message
+                    [
+                      {
+                        text: 'OK',
+                        onPress: () => navigation.navigate('CommunityHome'), // Reset dataAdded state
+                        style: 'cancel', // You can use 'destructive' or 'default' for different styles
+                      },
+                    ],
+                    {
+                    //   titleStyle: {
+                    //     color: 'green', // Change the title text color
+                    //     fontSize: 20,    // Change the title font size
+                    //   },
+                    //   containerStyle: {
+                    //     backgroundColor: 'lightgray', // Change the background color of the alert
+                    //   },
+                    //   contentContainerStyle: {
+                    //     alignItems: 'center', // Center the content inside the alert
+                    //   },
+                    }
+                  );
             })
             .catch((error) => {
                 console.error('Error updating data:', error);
