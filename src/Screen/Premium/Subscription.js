@@ -50,6 +50,18 @@ const Subscription = () => {
             setExpiryDate('');
             setNameOnCard('');
             setCvv('');
+             Alert.alert(
+    "Successful",
+    "Data added successfully to the database",
+    [
+      {
+        text: "OK",
+        onPress: () => console.log("OK Pressed"),
+        style: "cancel",
+      },
+    ],
+    { cancelable: false }
+  );
         })
         .catch((error) => {
             console.error('Error adding data:', error);
