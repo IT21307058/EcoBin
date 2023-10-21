@@ -183,5 +183,6 @@ const styles = StyleSheet.create({
         height: 50,
         // backgroundColor:"#fff",
         // color:"#fff"
+        ///
     },
 });
