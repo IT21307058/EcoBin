@@ -1,82 +1,90 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import colors from '../../styles/color';
 import { useNavigation } from '@react-navigation/native';
 import imagePath from '../../constants/imagePath';
 
 const DetailedBlogView = ({ route }) => {
+  const navigation = useNavigation();
   const { item } = route.params; // Get the item data passed from the previous screen
 
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
+    <ImageBackground
+      source={imagePath.background}
+      style={styles.backgroundImage}
+    >
+      <SafeAreaView style={styles.container}>
         <View style={styles.headerStyle}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={imagePath.bluearrow} />
+            <Image source={imagePath.bluearrow} style={styles.headerImage} />
           </TouchableOpacity>
-          <Image source={imagePath.bluebell} />
+          <Image source={imagePath.bluebell} style={styles.headerImage} />
         </View>
-        <View style={{ marginTop: 50, alignSelf: 'center' }}>
+        <View style={styles.content}>
           <Text style={styles.headerText}>Detailed Blog View</Text>
-        </View>
-        <View style={styles.card}>
-          <Text style={styles.label}>Topic:</Text>
-          <Text style={styles.value}>{item.topic}</Text>
+          <View style={styles.card}>
+            <Text style={styles.label}>Topic:</Text>
+            <Text style={styles.value}>{item.topic}</Text>
 
-          <Text style={styles.label}>Body:</Text>
-          <Text style={styles.value}>{item.body}</Text>
+            <Text style={styles.label}>Body:</Text>
+            <Text style={styles.value}>{item.body}</Text>
+          </View>
         </View>
       </SafeAreaView>
-    </View>
+    </ImageBackground>
   );
 };
-
-export default DetailedBlogView;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
-    justifyContent: 'space-between',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
   },
   headerStyle: {
     paddingVertical: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.2,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
   },
+  headerImage: {
+    width: 24,
+    height: 24,
+  },
   headerText: {
     textTransform: 'uppercase',
-    fontSize: 18,
+    fontSize: 30, // increased font size
     fontWeight: 'bold',
-    color: colors.themeColor,
-    marginBottom: 14,
+    color: '#0E86D4', // light blue
+    marginVertical: 24,
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent', // transparent
     borderRadius: 10,
     padding: 16,
     width: '80%',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    alignSelf: 'center',
   },
   label: {
-    fontSize: 16,
+    fontSize: 20, // increased font size
     fontWeight: 'bold',
-    color: colors.blackOpacity30,
+    color: '#0E86D4', // light blue
   },
   value: {
-    fontSize: 20,
+    fontSize: 24, // increased font size
     marginBottom: 10,
+    color: '#FFFFFF', // white
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
   },
 });
+
+export default DetailedBlogView;

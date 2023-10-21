@@ -51,8 +51,8 @@ const Home = (props) => {
             style={styles.card}
             onPress={() => navigation.navigate("BlogHome")}
           >
-            <Image source={imagePath.blog} />
-            <Text style={styles.cardText}>Blogs</Text>
+            <Image source={imagePath.goal} />
+            <Text style={styles.cardText}>Goals</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
@@ -69,16 +69,17 @@ const Home = (props) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("BlogHome")}>
           <ImageBackground
             source={imagePath.home_image} // Add your background image source here
             style={styles.cardBackgroundImage}
           >
             {/* <View style={styles.overlay} /> */}
-            <Text style={styles.cardText1}>Learn From The Experts For Effective</Text>
+            <Text style={styles.cardText1}>
+              Learn From The Experts For Effective
+            </Text>
           </ImageBackground>
         </TouchableOpacity>
-
       </View>
     </View>
   );
@@ -137,22 +138,22 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     marginTop: 50,
-    paddingHorizontal: 40
+    paddingHorizontal: 40,
   },
   cardBackgroundImage: {
-    width: '100%', // Makes the image span the whole width of the card container
+    width: "100%", // Makes the image span the whole width of the card container
     height: 200, // Adjust the height as needed
-    justifyContent: 'center',
-    alignItems: 'center',
-    resizeMode: 'cover',
+    justifyContent: "center",
+    alignItems: "center",
+    resizeMode: "cover",
   },
   cardText1: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color: 'white', // Set the text color
+    fontWeight: "bold",
+    color: "white", // Set the text color
     // position: 'absolute',
     // top: '0%',
     // left: '0%',
     // transform: [{ translateX: -50 }, { translateY: -10 }],
-  }
-})
+  },
+});
