@@ -28,6 +28,13 @@ import { useNavigation } from "@react-navigation/native";
 const Home = (props) => {
   const navigation = useNavigation();
 
+  const navigationToGoals = () => {
+    navigation.navigate("AllGoal");
+  };
+  const navigationToReminders = () => {
+    navigation.navigate("AllReminder");
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground source={imagePath.background} style={styles.imgStyle}>
@@ -47,16 +54,14 @@ const Home = (props) => {
             <Image source={imagePath.event} />
             <Text style={styles.cardText}>Events</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => navigation.navigate("BlogHome")}
-          >
+
+          <TouchableOpacity style={styles.card} onPress={navigationToGoals}>
             <Image source={imagePath.goal} />
             <Text style={styles.cardText}>Goals</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={navigationToReminders}>
             <Image source={imagePath.reminder} />
             <Text style={styles.cardText}>Reminders</Text>
           </TouchableOpacity>
