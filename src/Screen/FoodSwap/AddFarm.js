@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { db } from '../../../config';
 import { ref, set, push } from 'firebase/database';
 import imagePath from '../../constants/imagePath';
-import RNRNPickerSelectSelect from 'react-native-picker-select';
+import { Picker } from '@react-native-picker/picker'; // Updated import
 
 const AddFarm = () => {
   const navigation = useNavigation();
@@ -95,35 +95,35 @@ const AddFarm = () => {
             />
             <View style={styles.pickerContainer}>
               <Text>Type:</Text>
-              <RNPickerSelect
+              <Picker
                 selectedValue={type}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => setType(itemValue)}>
-                <RNPickerSelect.Item label="Type 1" value="Type 1" />
-                <RNPickerSelect.Item label="Type 2" value="Type 2" />
-                <RNPickerSelect.Item label="Type 3" value="Type 3" />
-              </RNPickerSelect>
+                <Picker.Item label="Type 1" value="Type 1" />
+                <Picker.Item label="Type 2" value="Type 2" />
+                <Picker.Item label="Type 3" value="Type 3" />
+              </Picker>
             </View>
             <View style={styles.pickerContainer}>
               <Text>Area:</Text>
-              <RNPickerSelect
+              <Picker
                 selectedValue={area}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => setArea(itemValue)}>
-                <RNPickerSelect.Item label="Area 1" value="Area 1" />
-                <RNPickerSelect.Item label="Area 2" value="Area 2" />
-                <RNPickerSelect.Item label="Area 3" value="Area 3" />
-              </RNPickerSelect>
+                <Picker.Item label="Area 1" value="Area 1" />
+                <Picker.Item label="Area 2" value="Area 2" />
+                <Picker.Item label="Area 3" value="Area 3" />
+              </Picker>
             </View>
             <View style={styles.pickerContainer}>
               <Text>Status:</Text>
-              <RNPickerSelect
+              <Picker
                 selectedValue={status}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => setStatus(itemValue)}>
-                <RNPickerSelect.Item label="Available" value="Available" />
-                <RNPickerSelect.Item label="Not Available" value="Not Available" />
-              </RNPickerSelect>
+                <Picker.Item label="Available" value="Available" />
+                <Picker.Item label="Not Available" value="Not Available" />
+              </Picker>
             </View>
             <ButtonComp btnText={'Add Farm'} onPress={dataAddOn} />
           </View>
@@ -137,11 +137,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    padding: 10,
   },
   content: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     paddingHorizontal: 20,
   },
   headerText: {
@@ -150,9 +150,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.themeColor,
     marginVertical: 24,
+    textAlign: 'center',
   },
   headerStyle: {
-    paddingVertical: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    width: '100%',
     padding: 20,
     borderRadius: 20,
   },
@@ -171,15 +170,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 12,
-    marginBottom: 24,
+    marginBottom: 16,
     fontSize: 16,
   },
   pickerContainer: {
-    marginBottom: 24,
+    marginBottom: 16,
   },
   picker: {
     height: 50,
-    width: 200,
+    width: '100%',
   },
 });
 

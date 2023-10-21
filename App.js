@@ -32,10 +32,10 @@ import UpdateBlog from "./src/Screen/Blog/UpdateBlog"; // Import the UpdateBlog 
 import DetailedBlogView from "./src/Screen/Blog/DetailedBlogView"; // Import the DetailedBlogView screen
 
 //Farms
-// import FarmHome from "./src/Screen/FoodSwap/FarmHome"; // Import the FarmHome screen
-// import AddFarm from "./src/Screen/FoodSwap/AddFarm"; // Import the AddFarm screen
-// import OneFarm from "./src/Screen/FoodSwap/OneFarm"; // Import the OneFarm screen
-// import UpdateFarm from "./src/Screen/FoodSwap/UpdateFarm"; // Import the UpdateFarm screen
+import FarmHome from "./src/Screen/FoodSwap/FarmHome"; // Import the FarmHome screen
+import AddFarm from "./src/Screen/FoodSwap/AddFarm"; // Import the AddFarm screen
+import OneFarm from "./src/Screen/FoodSwap/OneFarm"; // Import the OneFarm screen
+import UpdateFarm from "./src/Screen/FoodSwap/UpdateFarm"; // Import the UpdateFarm screen
 
 import AllGoal from "./src/Screen/Goal/AllGoal";
 import AddGoal from "./src/Screen/Goal/AddGoal";
@@ -209,10 +209,6 @@ function StackNavigator() {
       <Stack.Screen name="UpdatePost" component={UpdatePost} />
       <Stack.Screen name="OnePost" component={OnePost} />
       <Stack.Screen name="FeedbackPage" component={FeedbackPage} />
-      {/* <Stack.Screen name='AdvertiseHome' component={AdvertiseHome} /> */}
-      {/* <Stack.Screen name='AddAdvertise' component={AddAdvertise} />
-      <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
-      <Stack.Screen name='OneAdvertise' component={OneAdvertise} /> */}
     </Stack.Navigator>
   );
 }
@@ -237,10 +233,10 @@ function StackHomeNavigator() {
       <Stack.Screen name="UpdateBlog" component={UpdateBlog} />
       <Stack.Screen name="DetailedBlogView" component={DetailedBlogView} />
       {/* Farm */}
-      {/* <Stack.Screen name="FarmHome" component={FarmHome} />
+      <Stack.Screen name="FarmHome" component={FarmHome} />
       <Stack.Screen name="AddFarm" component={AddFarm} />
       <Stack.Screen name="OneFarm" component={OneFarm} />
-      <Stack.Screen name="UpdateFarm" component={UpdateFarm} /> */}
+      <Stack.Screen name="UpdateFarm" component={UpdateFarm} />
     </Stack.Navigator>
   );
 }
