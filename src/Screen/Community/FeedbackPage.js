@@ -129,13 +129,13 @@ const FeedbackPage = ({ route }) => {
 
 
                     <ButtonComp
-                        btnText={'Submit'}
+                        btnText={'Comment'}
                         onPress={dataAddOn}
                     />
 
                 </View>
                 <View style={styles.feedbackCountContainer}>
-                    <Text style={{fontSize:13, color:colors.themeColor}}>Total Feedback Count: {feedbackCount}</Text>
+                    <Text style={{fontSize:13, color:colors.themeColor}}>Comment Count: {feedbackCount}</Text>
                 </View>
 
                 <FlatList
@@ -201,12 +201,13 @@ const styles = StyleSheet.create({
     commentContainer: {
         marginHorizontal: 16,
         marginVertical: 8,
-        backgroundColor: colors.white,
+        backgroundColor: '#00A86B',
         borderRadius: 10,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
-        elevation: 2, // This property adds elevation (shadow) on Android
+        borderColor: 'green',
+        // elevation: 2, 
       },
     
       commentItem: {
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
     
       commentText: {
         fontSize: 16,
-        color: colors.black,
+        color: colors.white,
       },
       feedbackCountContainer: {
         // marginVertical: 20,

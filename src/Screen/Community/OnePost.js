@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView, FlatList, Button, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, FlatList, Button, Image, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
@@ -29,6 +29,29 @@ const OnePost = ({ route }) => {
             .then(() => {
                 console.log('Community post deleted successfully');
                 // You can also update the state to remove the deleted item from the list
+                Alert.alert(
+                    'Community post deleted successfully',
+                    null, // You can pass null for the message if you don't want a message
+                    [
+                      {
+                        text: 'OK',
+                        onPress: () => navigation.navigate('CommunityHome'), // Reset dataAdded state
+                        style: 'cancel', // You can use 'destructive' or 'default' for different styles
+                      },
+                    ],
+                    {
+                    //   titleStyle: {
+                    //     color: 'green', // Change the title text color
+                    //     fontSize: 20,    // Change the title font size
+                    //   },
+                    //   containerStyle: {
+                    //     backgroundColor: 'lightgray', // Change the background color of the alert
+                    //   },
+                    //   contentContainerStyle: {
+                    //     alignItems: 'center', // Center the content inside the alert
+                    //   },
+                    }
+                  );
             })
             .catch((error) => {
                 console.error('Error deleting advertise:', error);

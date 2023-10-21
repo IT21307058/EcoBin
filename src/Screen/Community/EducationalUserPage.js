@@ -8,7 +8,7 @@ import colors from '../../styles/color';
 import { useNavigation } from '@react-navigation/native'
 
 import { db } from '../../../config';
-import { ref, onValue, remove } from 'firebase/database'
+import { ref, onValue, remove, set } from 'firebase/database'
 import moment from 'moment';
 
 const EducationalUserPage = () => {
@@ -16,7 +16,9 @@ const EducationalUserPage = () => {
 
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const DESCRIPTION_CHARACTER_LIMIT = 20;
+    const DESCRIPTION_CHARACTER_LIMIT = 25;
+    const [likedItems, setLikedItems] = useState([]);
+
 
     // const handleItemPress = (item) => {
     //     // Navigate to the desired page with the item data
@@ -71,6 +73,30 @@ const EducationalUserPage = () => {
                 item.description.toLowerCase().includes(normalizedQuery))
         );
     });
+
+    const handleLike = (item) => {
+        const itemIndex = likedItems.indexOf(item.id);
+
+        if (itemIndex !== -1) {
+            // Item is already liked, remove it from the likedItems
+            setLikedItems(likedItems.filter((id) => id !== item.id));
+
+            // Decrement the like count for the selected post
+            const updatedLikes = item.likes ? item.likes - 1 : 0;
+            set(ref(db, `community/${item.id}/likes`), updatedLikes);
+        } else {
+            // Item is not liked, add it to the likedItems
+            setLikedItems([...likedItems, item.id]);
+
+            // Increment the like count for the selected post
+            const updatedLikes = item.likes ? item.likes + 1 : 1;
+            set(ref(db, `community/${item.id}/likes`), updatedLikes);
+        }
+
+        // Increment the like count for the selected post
+        // const updatedLikes = item.likes ? item.likes + 1 : 1;
+        // set(ref(db, `community/${item.id}/likes`), updatedLikes);
+    };
 
     // Filter the data to show only posts with "Educational Institutes" category
     //   const educationalInstitutePosts = filteredData.filter((item) => item.category === 'Educational Institutes');
@@ -133,19 +159,34 @@ const EducationalUserPage = () => {
                                             </Text>
                                         )}
                                     </Text>
+                                    <View style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        marginTop: 5
+                                    }}>
+                                        <TouchableOpacity onPress={() => handleLike(item)} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            marginRight: 20
+                                        }}>
+                                            <Image source={likedItems.includes(item.id) ? imagePath.like_green : imagePath.like_community} style={styles.commentcontainer} />
+                                            <Text style={styles.likeButton}>({item.likes || 0})</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => handleFeedback(item)} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                        }}>
+                                            <Image source={imagePath.roundcomment} style={styles.commentcontainer} />
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                                 <View style={{ alignItems: 'flex-end' }}>
-                                    <TouchableOpacity onPress={() => handleFeedback(item)}>
+                                    {/* <TouchableOpacity onPress={() => handleFeedback(item)}>
                                         <Image source={imagePath.roundcomment} style={styles.commentcontainer} />
-                                    </TouchableOpacity>
+                                    </TouchableOpacity> */}
                                     <Text style={styles.date}>{formatDate(item.date)}</Text>
                                 </View>
-                                {/* <TouchableOpacity onPress={() => handleUpdate(item)}>
-                                    <Text style={styles.updateButton}>Update</Text>
-                                </TouchableOpacity> */}
-                                {/* <TouchableOpacity onPress={() => handleDelete(item.id)}>
-                                    <Text style={styles.deleteButton}>Delete</Text>
-                                </TouchableOpacity> */}
+                                
                             </View>
                         </TouchableOpacity>
                     )}
@@ -264,7 +305,7 @@ const styles = StyleSheet.create({
         alignSelf: "center"
     },
     commentcontainer: {
-        height: 40,
-        width: 40
+        height: 25,
+        width: 25
     }
 })
