@@ -18,7 +18,9 @@ const DetailedBlogView = ({ route }) => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={imagePath.bluearrow} style={styles.headerImage} />
           </TouchableOpacity>
-          <Image source={imagePath.bluebell} style={styles.headerImage} />
+          <TouchableOpacity>
+            <Image source={imagePath.bluebell} style={styles.headerImage} />
+          </TouchableOpacity>
         </View>
         <View style={styles.content}>
           <Text style={styles.headerText}>Detailed Blog View</Text>
@@ -52,10 +54,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
   },
   headerImage: {
-    width: 24,
-    height: 24,
+    width: 40, // increased width
+    height: 40, // increased height
+    margin: 16,
   },
   headerText: {
     textTransform: 'uppercase',
