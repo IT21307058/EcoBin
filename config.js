@@ -23,6 +23,7 @@ const firebaseConfig = {
   // appId: "1:132721398140:web:69a5d6f8b3607d354654f9",
   // measurementId: "G-56MTJEXVGV"
 
+  // Yasitha FB
   // apiKey: "AIzaSyAyDSBMm6B6H0l63ejdc9MOp900pNE1tz8",
   // authDomain: "ecobin-9cef3.firebaseapp.com",
   // databaseURL: "https://ecobin-9cef3-default-rtdb.firebaseio.com",
@@ -32,6 +33,7 @@ const firebaseConfig = {
   // appId: "1:418238658674:web:96fb6407e202bba9c76aeb",
   // measurementId: "G-M2GWLT81X1"
 
+  // YeranFB
   apiKey: "AIzaSyBeWQ77TS2gfy0DAx06fKYMJCG_B9yjBpI",
   authDomain: "ecobin-f9162.firebaseapp.com",
   databaseURL:
