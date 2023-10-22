@@ -1,25 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import React, { useState, useEffect } from 'react';
-import { firebase } from './config'
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import React, { useState, useEffect } from "react";
 import { firebase } from "./config";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const TopTabs = createMaterialTopTabNavigator();
 
-import colors from "../EcoBin/src/styles/color"
 import colors from "../EcoBin/src/styles/color";
 
 import AdvertiseHome from "./src/Screen/Advertise/AdvertiseHome";
@@ -41,10 +32,10 @@ import UpdateBlog from "./src/Screen/Blog/UpdateBlog"; // Import the UpdateBlog 
 import DetailedBlogView from "./src/Screen/Blog/DetailedBlogView"; // Import the DetailedBlogView screen
 
 //Farms
-import FarmHome from "./src/Screen/FoodSwap/FarmHome"; // Import the FarmHome screen
-import AddFarm from "./src/Screen/FoodSwap/AddFarm"; // Import the AddFarm screen
-import OneFarm from "./src/Screen/FoodSwap/OneFarm"; // Import the OneFarm screen
-import UpdateFarm from "./src/Screen/FoodSwap/UpdateFarm"; // Import the UpdateFarm screen
+// import FarmHome from "./src/Screen/FoodSwap/FarmHome"; // Import the FarmHome screen
+// import AddFarm from "./src/Screen/FoodSwap/AddFarm"; // Import the AddFarm screen
+// import OneFarm from "./src/Screen/FoodSwap/OneFarm"; // Import the OneFarm screen
+// import UpdateFarm from "./src/Screen/FoodSwap/UpdateFarm"; // Import the UpdateFarm screen
 
 import AllGoal from "./src/Screen/Goal/AllGoal";
 import AddGoal from "./src/Screen/Goal/AddGoal";
@@ -70,11 +61,11 @@ import Login from "./src/Screen/Auth/Login";
 import Registeration from "./src/Screen/Auth/Registeration";
 import SplashScreen from "./src/Screen/Auth/SplashScreen";
 
-import AddEvent from './src/Screen/Events/AddEvent';
-import AllEvents from './src/Screen/Events/AllEvents';
-import UpdateEvent from './src/Screen/Events/UpdateEvent';
-import PremiumV from './src/Screen/Premium/PremiumV';
-import Subscription from './src/Screen/Premium/Subscription';
+import AddEvent from "./src/Screen/Events/AddEvent";
+import AllEvents from "./src/Screen/Events/AllEvents";
+import UpdateEvent from "./src/Screen/Events/UpdateEvent";
+import PremiumV from "./src/Screen/Premium/PremiumV";
+import Subscription from "./src/Screen/Premium/Subscription";
 
 function TopTabsGroup() {
   return (
@@ -229,48 +220,8 @@ function StackNavigator() {
       <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
       <Stack.Screen name='OneAdvertise' component={OneAdvertise} /> */}
     </Stack.Navigator>
-  )
-}
-
-function StackHomeNavigator() {
-
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name='MainHome' component={Home} />
-
-      {/* Insert Here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */}
-      <Stack.Screen name='AllEvents' component={AllEvents} />
-      <Stack.Screen name='AddEvent' component={AddEvent} />
-      <Stack.Screen name='UpdateEvent' component={UpdateEvent} />
-      <Stack.Screen name='PremiumV' component={PremiumV} />
-      <Stack.Screen name='Subscription' component={Subscription} />
-      
-
-    </Stack.Navigator>
-  )
-}
-
-
-function StackAdvertiseNavigator() {
-
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name='CommunityHome' component={CommunityHome} />
-      <Stack.Screen name='EducationalUserPage' component={EducationalUserPage} />
-      <Stack.Screen name='EnvironmentOrganizationPage' component={EnvironmentOrganizationPage} />
-      <Stack.Screen name='AllCommunity' component={AllCommunity} />
-      <Stack.Screen name='AddPost' component={AddPost} />
-      <Stack.Screen name='UpdatePost' component={UpdatePost} />
-      <Stack.Screen name='OnePost' component={OnePost} />
-      <Stack.Screen name='FeedbackPage' component={FeedbackPage} /> */}
-      <Stack.Screen name='AdvertiseHome' component={TopTabsGroup} />
-      <Stack.Screen name='AddAdvertise' component={AddAdvertise} />
-      <Stack.Screen name='UpdateAdvertise' component={UpdateAdvertise} />
-      <Stack.Screen name='OneAdvertise' component={OneAdvertise} /> 
-    </Stack.Navigator>
   );
 }
-
 
 function StackHomeNavigator() {
   return (
@@ -292,10 +243,16 @@ function StackHomeNavigator() {
       <Stack.Screen name="UpdateBlog" component={UpdateBlog} />
       <Stack.Screen name="DetailedBlogView" component={DetailedBlogView} />
       {/* Farm */}
-      <Stack.Screen name="FarmHome" component={FarmHome} />
+      {/* <Stack.Screen name="FarmHome" component={FarmHome} />
       <Stack.Screen name="AddFarm" component={AddFarm} />
       <Stack.Screen name="OneFarm" component={OneFarm} />
-      <Stack.Screen name="UpdateFarm" component={UpdateFarm} />
+      <Stack.Screen name="UpdateFarm" component={UpdateFarm} /> */}
+      {/* Premium */}
+      <Stack.Screen name="AllEvents" component={AllEvents} />
+      <Stack.Screen name="AddEvent" component={AddEvent} />
+      <Stack.Screen name="UpdateEvent" component={UpdateEvent} />
+      <Stack.Screen name="PremiumV" component={PremiumV} />
+      <Stack.Screen name="Subscription" component={Subscription} />
     </Stack.Navigator>
   );
 }

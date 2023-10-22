@@ -22,8 +22,6 @@ import imagePath from "../../constants/imagePath";
 // import dummyData from './dummyData';
 import ButtonComp from '../../Components/ButtonComp';
 import colors from '../../styles/color'
-import ButtonComp from "../../Components/ButtonComp";
-import colors from "../../styles/color";
 // import TextInputWithLabel from '../../Components/TextInputWithLabel';
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from "@react-native-picker/picker";
