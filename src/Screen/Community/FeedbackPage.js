@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView,TextInput, FlatList, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
@@ -11,8 +11,16 @@ import { useNavigation } from '@react-navigation/native'
 import { db } from '../../../config';
 import { ref, set, push, remove, onValue } from 'firebase/database'
 
+// const CommentList = ({ item }) => {
+//     return (
+//         <View style={styles.commentItem}>
+//             <Text style={styles.commentText}>{item.comment}</Text>
+//         </View>
+//     );
+// };
+
 const FeedbackPage = ({ route }) => {
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
 
     // const { item } = route.params; // Get the item data passed from the previous screen
 
@@ -27,6 +35,7 @@ const FeedbackPage = ({ route }) => {
     const [topic, setTopic] = useState(item.topic);
     const [description, setDescription] = useState(item.description);
     const [feedbackCount, setFeedbackCount] = useState(0); // Initialize feedback count to 0
+    const [comments, setComments] = useState([]);
 
 
     const dataAddOn = () => {
@@ -61,6 +70,22 @@ const FeedbackPage = ({ route }) => {
             }
         });
 
+        // Create a reference to the comments for this specific post
+        const commentsRef = ref(db, `feedbackCommunity/${item.id}`);
+
+        // Listen for changes to the comments for this post
+        onValue(commentsRef, (snapshot) => {
+            if (snapshot.exists()) {
+                // If there are comments, update the comments state
+                const commentsData = snapshot.val();
+                const commentsArray = Object.values(commentsData);
+                setComments(commentsArray);
+            } else {
+                // If there are no comments, set the comments state to an empty array
+                setComments([]);
+            }
+        });
+
         // return () => {
         //     // Unsubscribe from the Firebase listener when the component unmounts
         //     off(feedbackRef);
@@ -72,10 +97,12 @@ const FeedbackPage = ({ route }) => {
 
             <SafeAreaView>
                 <View style={styles.headerStyle}>
-                    <Image source={imagePath.backarrow} />
-                    <Image source={imagePath.bell} />
+                    <TouchableOpacity onPress={() => navigation.navigate('CommunityHome')}>
+                        <Image source={imagePath.bluearrow} />
+                    </TouchableOpacity>
+                    <Image source={imagePath.bluebell} />
                 </View>
-                <View style={{ marginTop: 50, alignSelf: 'center' }}>
+                <View style={{ marginTop: 10, alignSelf: 'center' }}>
                     <Text style={styles.headerText}>{communityType}</Text>
                 </View>
                 <View style={{
@@ -83,33 +110,45 @@ const FeedbackPage = ({ route }) => {
                     shadowColor: '#000',
                     shadowOffset: { width: 0, height: 2 },
                     shadowOpacity: 0.2,
-                    width: '75%',
+                    width: '80%',
                     alignSelf: "center",
                     padding: moderateScale(15),
                     borderRadius: moderateScale(20),
                     paddingHorizontal: moderateScale(24),
                     paddingTop: moderateVerticalScale(44)
                 }}>
-                    <Text >{topic}</Text>
-                    <Text >{description}</Text>
+                    <Text style={styles.title}>{topic}</Text>
+                    <Text style={styles.body}>{description}</Text>
 
                     <TextInput placeHolder="Enter your Feedback" value={feedback}
                         onChangeText={(text) => setFeedback(text)} multiline={true} // Enable multiline input
-                        numberOfLines={10} // Set the number of lines you want to display initially
-                        maxLength={200} // Set the maximum character count (200 words)
+                        numberOfLines={7} // Set the number of lines you want to display initially
+                        maxLength={100} // Set the maximum character count (200 words)
                         textAlignVertical='top' // Set the cursor to start at the top-left corner
                         style={styles.input} />
 
 
                     <ButtonComp
-                        btnText={'Submit'}
+                        btnText={'Comment'}
                         onPress={dataAddOn}
                     />
 
                 </View>
                 <View style={styles.feedbackCountContainer}>
-                    <Text>Total Feedback Count: {feedbackCount}</Text>
+                    <Text style={{fontSize:13, color:colors.themeColor}}>Comment Count: {feedbackCount}</Text>
                 </View>
+
+                <FlatList
+                    data={comments}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={({ item }) => (
+                        <View style={styles.commentContainer}>
+                            <View style={styles.commentItem}>
+                                <Text style={styles.commentText}>{item.feedback}</Text>
+                            </View>
+                        </View>
+                    )}
+                />
             </SafeAreaView>
         </View>
     )
@@ -147,5 +186,42 @@ const styles = StyleSheet.create({
         width: '100%',
         fontSize: 16,
         marginBottom: 28
-    }
+    },
+    title: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: colors.themeColor
+    },
+    body: {
+        fontSize: 15,
+        marginTop: 8,
+        color: colors.blackOpacity80,
+        marginBottom: 10
+    },
+    commentContainer: {
+        marginHorizontal: 16,
+        marginVertical: 8,
+        backgroundColor: '#00A86B',
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        borderColor: 'green',
+        // elevation: 2, 
+      },
+    
+      commentItem: {
+        padding: 10,
+      },
+    
+      commentText: {
+        fontSize: 16,
+        color: colors.white,
+      },
+      feedbackCountContainer: {
+        // marginVertical: 20,
+        marginTop: 10,
+        marginBottom:5,
+        alignSelf: 'center',
+      }
 })

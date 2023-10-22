@@ -1,24 +1,24 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { firebase } from '../../../config'
+// import { firebase } from '../../../config'
 import colors from '../../styles/color';
 import imagePath from '../../constants/imagePath';
 
 
-const Login = () => {
+const SplashScreen = () => {
 
     const navigation = useNavigation()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [password, setPassword] = useState('')
 
-    loginUser = async (email, password) => {
-        try {
-            await firebase.auth().signInWithEmailAndPassword(email, password)
-        } catch (error) {
-            alert(error.message)
-        }
-    }
+    // loginUser = async (email, password) => {
+    //     try {
+    //         await firebase.auth().signInWithEmailAndPassword(email, password)
+    //     } catch (error) {
+    //         alert(error.message)
+    //     }
+    // }
 
     return (
 
@@ -28,7 +28,7 @@ const Login = () => {
                 style={styles.imgStyle}
             >
 
-                <Text style={{ fontWeight: 'bold', fontSize: 40, color: colors.white }}>LOGIN</Text>
+                {/* <Text style={{ fontWeight: 'bold', fontSize: 40, color: colors.white }}>LOGIN</Text>
                 <View style={{ marginTop: 40 }}>
                     <TextInput
                         style={styles.textInput}
@@ -53,18 +53,20 @@ const Login = () => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate('Registeration')} style={{ marginTop: 20 }}>
                     <Text style={{ fontSize: 14, color: colors.white }}>Don't Have an Account Sign Up</Text>
+                </TouchableOpacity> */}
+                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                    <Image
+                        source={imagePath.white_logo} // Replace with your logo image path
+                        style={styles.logo}
+                    />
                 </TouchableOpacity>
-                <Image
-                    source={imagePath.white_logo} // Replace with your logo image path
-                    style={styles.logo}
-                />
                 <Text style={styles.copyRightText}>© 2023 EcoBin. All Rights Reserved.</Text>
             </ImageBackground>
         </View>
     )
 }
 
-export default Login
+export default SplashScreen
 
 const styles = StyleSheet.create({
     container: {
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.white,
         marginBottom: 10,
         textAlign: "center",
-        color:colors.white
+        color: colors.white
     },
     button: {
         marginTop: 50,

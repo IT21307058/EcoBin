@@ -16,6 +16,8 @@ const AllCommunity = () => {
 
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const DESCRIPTION_CHARACTER_LIMIT = 25;
+    const [likedItems, setLikedItems] = useState([]);
 
     // const handleItemPress = (item) => {
     //     // Navigate to the desired page with the item data
@@ -31,30 +33,6 @@ const AllCommunity = () => {
         // Navigate to the 'UpdateAdvertise' screen when the image is pressed
         navigation.navigate('AddPost');
     };
-
-    // const handleLike = (item) => {
-    //     const postId = item.id; // Get the unique post identifier
-
-    //     // Create a reference for the likes count of the specific post in a separate database (communityLikes)
-    //     const communityLikesRef = ref(db, `communityLikes/${item.id}`);
-
-    //     // Get the current number of likes for the post
-    //     const currentLikes = item.likes || 0;
-
-    //     // Increment the likes count by 1
-    //     const newLikes = currentLikes + 1;
-
-    //     // Update the likes count for the specific post in the communityLikes database
-    //     set(communityLikesRef, newLikes)
-    //         .then(() => {
-    //             // Successfully updated the likes count for the post
-    //             console.log(`Likes updated successfully for post ${postId}`);
-    //         })
-    //         .catch((error) => {
-    //             // Handle the error, if any
-    //             console.error(`Error updating likes for post ${postId}:`, error);
-    //         });
-    // };
 
     useEffect(() => {
         // Use the Firebase Realtime Database reference to listen for data changes
@@ -72,16 +50,7 @@ const AllCommunity = () => {
         });
     }, []);
 
-    // const handleLike = (item) => {
-    //     // Ensure 'likes' is a valid number or initialize it with 0
-    //     const newLikes = isNaN(item.likes) ? 0 : item.likes + 1;
 
-    //     // Update the like count for the post in the database
-    //     const postRef = ref(db, `community/${item.id}`);
-    //     set(postRef, {
-    //         likes: newLikes,
-    //     });
-    // };
 
     const handleSingleItem = (item) => {
         // Navigate to the update page with the item data
@@ -96,26 +65,37 @@ const AllCommunity = () => {
     const filteredData = data.filter((item) => {
         // Filter the data based on the search query
         const normalizedQuery = searchQuery.toLowerCase();
-        // return item.topic.toLowerCase().includes(normalizedQuery) || item.description.toLowerCase().includes(normalizedQuery);
-        // Check if 'item.communityType', 'item.topic', and 'item.description' exist before using toLowerCase()
-        // const communityType = item.communityType ? item.communityType.toLowerCase() : '';
-        // const topic = item.topic ? item.topic.toLowerCase() : '';
-        // const description = item.description ? item.description.toLowerCase() : '';
-
-        // return (
-        //     communityType === 'residential users' &&
-        //     (communityType.includes(normalizedQuery) ||
-        //         topic.includes(normalizedQuery) ||
-        //         description.includes(normalizedQuery))
-        // );
 
         return (
             item.communityType.toLowerCase() === 'residential users' &&
-            (item.communityType.toLowerCase().includes(normalizedQuery) ||
-                item.topic.toLowerCase().includes(normalizedQuery) ||
+            (item.topic.toLowerCase().includes(normalizedQuery) ||
                 item.description.toLowerCase().includes(normalizedQuery))
         );
     });
+
+    const handleLike = (item) => {
+        const itemIndex = likedItems.indexOf(item.id);
+
+        if (itemIndex !== -1) {
+            // Item is already liked, remove it from the likedItems
+            setLikedItems(likedItems.filter((id) => id !== item.id));
+
+            // Decrement the like count for the selected post
+            const updatedLikes = item.likes ? item.likes - 1 : 0;
+            set(ref(db, `community/${item.id}/likes`), updatedLikes);
+        } else {
+            // Item is not liked, add it to the likedItems
+            setLikedItems([...likedItems, item.id]);
+
+            // Increment the like count for the selected post
+            const updatedLikes = item.likes ? item.likes + 1 : 1;
+            set(ref(db, `community/${item.id}/likes`), updatedLikes);
+        }
+
+        // Increment the like count for the selected post
+        // const updatedLikes = item.likes ? item.likes + 1 : 1;
+        // set(ref(db, `community/${item.id}/likes`), updatedLikes);
+    };
 
 
 
@@ -127,7 +107,9 @@ const AllCommunity = () => {
             >
                 <SafeAreaView style={{ flex: 1 }}>
                     <View style={styles.headerStyle}>
-                        <Image source={imagePath.backarrow} />
+                        <TouchableOpacity onPress={() => navigation.navigate('CommunityHome')}>
+                            <Image source={imagePath.backarrow} />
+                        </TouchableOpacity>
                         <Image source={imagePath.bell} />
                     </View>
                     <Text style={styles.AdvertiseTextStyle}>Residential User</Text>
@@ -156,14 +138,54 @@ const AllCommunity = () => {
                             <View style={styles.itemContainer}>
                                 <View>
                                     <Text style={styles.title}>{item.topic}</Text>
-                                    <Text style={styles.body}>{item.description}</Text>
+                                    {/* <Text style={styles.body}>{item.description}</Text> */}
+                                    <Text style={styles.body}>
+                                        {item.description.length > DESCRIPTION_CHARACTER_LIMIT
+                                            ? `${item.description.slice(0, DESCRIPTION_CHARACTER_LIMIT)}... `
+                                            : item.description}
+                                        {item.description.length > DESCRIPTION_CHARACTER_LIMIT && (
+                                            <Text style={{ color: 'blue' }} onPress={() => handleSeeMore(item)}>
+                                                See More
+                                            </Text>
+                                        )}
+                                    </Text>
+                                    <View style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
+                                        marginTop: 5
+                                    }}>
+                                        <TouchableOpacity onPress={() => handleLike(item)} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            marginRight: 20
+                                        }}>
+                                            <Image source={likedItems.includes(item.id) ? imagePath.like_green : imagePath.like_community} style={styles.commentcontainer} />
+                                            <Text style={styles.likeButton}>({item.likes || 0})</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => handleFeedback(item)} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            marginRight: 25
+                                        }}>
+                                            <Image source={imagePath.roundcomment} style={styles.commentcontainer} />
+                                        </TouchableOpacity>
+ 
+                                        {/* <TouchableOpacity onPress={share} style={{
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                        }}>
+                                            <Image source={imagePath.community_share} style={styles.commentcontainer} />
+                                        </TouchableOpacity> */}
+                                    </View>
                                 </View>
                                 <View style={{ alignItems: 'flex-end' }}>
-                                    <TouchableOpacity onPress={() => handleFeedback(item)}>
-                                        <Image source={imagePath.roundcomment} style={styles.AddIconImage} />
-                                    </TouchableOpacity>
+
                                     <Text style={styles.date}>{formatDate(item.date)}</Text>
+                                    {/* <TouchableOpacity onPress={() => handleLike(item)}>
+                                        <Text style={styles.likeButton}>Like ({item.likes || 0})</Text>
+                                    </TouchableOpacity> */}
                                 </View>
+
                             </View>
                         </TouchableOpacity>
                     )}
@@ -286,6 +308,7 @@ const styles = StyleSheet.create({
         color: colors.blackOpacity50
     },
     commentcontainer: {
-
+        height: 25,
+        width: 25
     }
 })

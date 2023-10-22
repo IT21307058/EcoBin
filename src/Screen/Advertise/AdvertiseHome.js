@@ -7,6 +7,7 @@ import ButtonComp from '../../Components/ButtonComp';
 import colors from '../../styles/color';
 import { useNavigation } from '@react-navigation/native'
 // import { TouchableOpacity } from 'react-native-gesture-handler';
+import moment from 'moment';
 
 import { db } from '../../../config';
 import { ref, onValue, remove } from 'firebase/database'
@@ -16,11 +17,16 @@ const AdvertiseHome = (props) => {
 
     const [data, setData] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const DESCRIPTION_CHARACTER_LIMIT = 30;
 
     // const handleImagePress = () => {
     //     // Navigate to the 'UpdateAdvertise' screen when the image is pressed
     //     navigation.navigate('AllCommunity');
     // };
+    const formatDate = (dateString) => {
+        const date = moment(dateString);
+        return date.format('YYYY/MM/DD');
+    };
 
     useEffect(() => {
         // Use the Firebase Realtime Database reference to listen for data changes
@@ -189,9 +195,31 @@ const AdvertiseHome = (props) => {
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => handleSingleItem(item)}>
                             <View style={styles.itemContainer}>
-                                <Text style={styles.title}>{item.advertiseType}</Text>
+                                {/* <Text style={styles.title}>{item.advertiseType}</Text>
                                 <Text style={styles.body}>{item.topic}</Text>
-                                <Text style={styles.body}>{item.description}</Text>
+                                <Text style={styles.body}>{item.description}</Text> */}
+
+                                <View>
+                                    <Text style={styles.title}>{item.topic}</Text>
+                                    {/* <Text style={styles.body}>{item.description}</Text> */}
+                                    <Text style={styles.body}>
+                                        {item.description.length > DESCRIPTION_CHARACTER_LIMIT
+                                            ? `${item.description.slice(0, DESCRIPTION_CHARACTER_LIMIT)}... `
+                                            : item.description}
+                                        {item.description.length > DESCRIPTION_CHARACTER_LIMIT && (
+                                            <Text style={{ color: 'blue' }} onPress={() => handleSeeMore(item)}>
+                                                See More
+                                            </Text>
+                                        )}
+                                    </Text>
+                                </View>
+                                <View style={{ alignItems: 'flex-end' }}>
+                                    {/* <TouchableOpacity onPress={() => handleFeedback(item)}>
+                                        <Image source={imagePath.roundcomment} style={styles.AddIconImage} />
+                                    </TouchableOpacity> */}
+                                    <Text style={styles.date}>{formatDate(item.date)}</Text>
+                                </View>
+
                                 {/* <TouchableOpacity onPress={() => handleUpdate(item)}>
                                     <Text style={styles.updateButton}>Update</Text>
                                 </TouchableOpacity> */}
@@ -271,31 +299,39 @@ const styles = StyleSheet.create({
         // color:"#fff"
     },
     itemContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         borderBottomWidth: 1,
         borderColor: '#ddd',
-        padding: 10,backgroundColor: 'white',
+        padding: 10, backgroundColor: 'white',
         borderRadius: 10,
         padding: 16,
         marginBottom: 16,
     },
     title: {
-      fontSize: 18,
-      fontWeight: 'bold',
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: colors.themeColor
     },
     body: {
-      fontSize: 16,
-      marginTop: 8,
+        fontSize: 15,
+        marginTop: 8,
+        color: colors.blackOpacity80
     },
     searchInput: {
-      width: '80%',
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 1,
-      borderRadius: 5,
-      paddingLeft: 10,
-      fontSize: 16,
-      backgroundColor: 'white', // Background color
-      marginBottom: 28,
-      alignSelf:"center"
+        width: '80%',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingLeft: 10,
+        fontSize: 16,
+        backgroundColor: 'white', // Background color
+        marginBottom: 28,
+        alignSelf: "center"
+    },
+    date: {
+        // marginLeft: 240,
+        color: colors.blackOpacity50
     }
 })
