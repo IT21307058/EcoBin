@@ -35,6 +35,10 @@ const Home = (props) => {
     navigation.navigate("AllReminder");
   };
 
+  const handleNavigateToAllEvents = () => {
+    navigation.navigate('AllEvents');
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground source={imagePath.background} style={styles.imgStyle}>
@@ -50,7 +54,7 @@ const Home = (props) => {
       </ImageBackground>
       <View style={styles.cardContainer}>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={handleNavigateToAllEvents}>
             <Image source={imagePath.event} />
             <Text style={styles.cardText}>Events</Text>
           </TouchableOpacity>
