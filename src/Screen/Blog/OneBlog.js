@@ -26,7 +26,7 @@ const OneBlog = ({ route }) => {
   };
 
   const handleDelete = (itemId) => {
-    // Remove the item from Firebase Realtime Database//
+    // Remove the item from Firebase Realtime Database
     const blogRef = ref(db, "blogs/" + itemId);
     remove(blogRef)
       .then(() => {
