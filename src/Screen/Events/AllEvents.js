@@ -61,8 +61,8 @@ const AllEvents = () => {
   };
 
   const handleUpdateClick = (event) => {
-    const { id: eventId, eventName, location, date, time, organization } = event;
-    navigation.navigate('UpdateEvent', { eventId, eventName, location, date, time, organization });
+    const { id: eventId, eventName, location, date, time, organization, account } = event;
+    navigation.navigate('UpdateEvent', { eventId, eventName, location, date, time, organization, account });
   };
 
   return (
@@ -99,12 +99,13 @@ const AllEvents = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Card style={styles.Card}>
-              <TouchableOpacity onPress={() => handleEventPress(item)}>
+              <TouchableOpacity >
                 <Text style={styles.title}>{item.eventName}</Text>
-                <Text style={styles.body}>{item.location}</Text>
-                <Text style={styles.body}>{item.organization}</Text>
-                <Text style={styles.body}>{item.date}</Text>
-                <Text style={styles.body}>{item.time}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Location :</Text>{item.location}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Organization :</Text>{item.organization}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Date :</Text>{item.date}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Time :</Text>{item.time}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Account No :</Text>{item.account}</Text>
 
                 <View style={styles.iconContainer}>
                   <Btn btnText={"Donate"} />
