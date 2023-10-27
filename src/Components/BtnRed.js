@@ -27,7 +27,7 @@ const BtnRed = ({
 const styles = StyleSheet.create({
     btnStyle: {
         height: moderateScale(30),
-        backgroundColor: "red",
+        backgroundColor: "#880808",
         borderRadius: moderateScale(4),
         alignItems: 'center',
         justifyContent: 'center',
