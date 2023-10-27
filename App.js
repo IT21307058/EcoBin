@@ -233,10 +233,10 @@ function StackHomeNavigator() {
       <Stack.Screen name="UpdateBlog" component={UpdateBlog} />
       <Stack.Screen name="DetailedBlogView" component={DetailedBlogView} />
       {/* Farm */}
-      {/* <Stack.Screen name="FarmHome" component={FarmHome} />
+      <Stack.Screen name="FarmHome" component={FarmHome} />
       <Stack.Screen name="AddFarm" component={AddFarm} />
       <Stack.Screen name="OneFarm" component={OneFarm} />
-      <Stack.Screen name="UpdateFarm" component={UpdateFarm} /> */}
+      <Stack.Screen name="UpdateFarm" component={UpdateFarm} />
     </Stack.Navigator>
   );
 }
