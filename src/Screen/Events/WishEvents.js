@@ -26,10 +26,6 @@ const WishEvents = () => {
     });
   }, []);
 
-  const handleDeleteevent = (wishId) => {
-    const wishRef = ref(db, `wish/${wishId}`);
-    remove(wishRef);
-  };
 
   return (
     <View style={styles.container}>
@@ -49,18 +45,12 @@ const WishEvents = () => {
         renderItem={({ item }) => (
             <Card style={styles.Card}>
           <View style={styles.item}>
-            <Text style={styles.title}>{item.eventName}</Text>
-            <Text style={styles.body}>{item.location}</Text>
-                <Text style={styles.body}>{item.organization}</Text>
-                <Text style={styles.body}>{item.date}</Text>
-                <Text style={styles.body}>{item.time}</Text>
-            {/* Display other wish details here */}
-            {/* <Btn style={styles.Btn} btnText={"Remove"} onPress={() => handleDeleteevent(item.id)} /> */}
-            <BtnRed
-            btnText={"Remove"}
-            onPress={() => handleDeleteevent(item.id)}
-            style={styles.removeButton} // Add this style
-          />
+          <Text style={styles.title}>{item.eventName}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Location :</Text>{item.location}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Organization :</Text>{item.organization}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Date :</Text>{item.date}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Time :</Text>{item.time}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Account No :</Text>{item.account}</Text>
           </View>
           </Card>
         )}
