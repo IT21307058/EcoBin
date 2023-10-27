@@ -125,7 +125,7 @@ const AllEvents = () => {
                 <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Account No :</Text>{item.account}</Text>
 
                 <View style={styles.iconContainer}>
-                  <Btn btnText={"Donate"} />
+                 
                   <Btn btnText={"Add"} onPress={() => handleAddToWish(item)} />
                   <TouchableOpacity onPress={() => handleUpdateClick(item)}>
                     <Icon
