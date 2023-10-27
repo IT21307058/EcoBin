@@ -5,6 +5,8 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 const firebaseConfig = {
+
+  // Bhanuka FB
   // apiKey: "AIzaSyAbeR2z0c4lyi7ERzy_IcvKQmphOL7H3a0",
   // authDomain: "realtimeexpo2.firebaseapp.com",
   // databaseURL: "https://realtimeexpo2-default-rtdb.asia-southeast1.firebasedatabase.app/",
@@ -14,6 +16,7 @@ const firebaseConfig = {
   // appId: "1:132721398140:web:69a5d6f8b3607d354654f9",
   // measurementId: "G-56MTJEXVGV"
 
+  // Bhanuka FB
   // apiKey: "AIzaSyAbeR2z0c4lyi7ERzy_IcvKQmphOL7H3a0",
   // authDomain: "realtimeexpo2.firebaseapp.com",
   // databaseURL: "https://realtimeexpo2-default-rtdb.asia-southeast1.firebasedatabase.app/",
