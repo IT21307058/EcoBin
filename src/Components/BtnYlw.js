@@ -6,7 +6,7 @@ import { moderateScale, scale } from 'react-native-size-matters';
 import colors from '../styles/color'
 
 
-const Btn = ({
+const BtnYlw = ({
     btnText,
     btnStyle = {},
     onPress = () => { },
@@ -26,21 +26,20 @@ const Btn = ({
 // define your styles
 const styles = StyleSheet.create({
     btnStyle: {
-        height: moderateScale(30),
-        backgroundColor: colors.green,
+        height: moderateScale(35),
+        backgroundColor: colors.yellow,
         borderRadius: moderateScale(4),
         alignItems: 'center',
         justifyContent: 'center',
-        width: moderateScale(60),
-        top: 10
+        width: moderateScale(85)
     },
     btnTextStyle: {
         fontSize: scale(12),
-        color: 'white',
+        color: 'black',
         fontWeight: 'bold',
         textTransform: 'uppercase',
     }
 });
 
 //make this component available to the app
-export default Btn;
+export default BtnYlw;

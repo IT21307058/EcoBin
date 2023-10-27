@@ -9,9 +9,11 @@ import colors from "../../styles/color";
 import {moderateScale,moderateVerticalScale,scale,} from "react-native-size-matters";
 import { ref, set, push } from "firebase/database";
 import { Card } from "react-native-paper";
+import BtnYlw from "../../Components/BtnYlw";
 import Btn from "../../Components/Btn";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { remove } from "firebase/database";
+import { Button } from "react-native-elements/dist/buttons/Button";
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
@@ -31,9 +33,44 @@ const AllEvents = () => {
     });
   }, []);
 
+  // const handleAddToWish = (event) => {
+  //   const wishRef = ref(db, "wish"); // Assuming "wish" is the node where you want to store the data
+  //   const newWishKey = push(wishRef).key; // Generate a new key for the wish
+
+  //   if (newWishKey) {
+  //     set(ref(db, `wish/${newWishKey}`), event)
+  //       .then(() => {
+  //         // Event added to "wish" successfully
+  //         console.log("Event added to wish!");
+  //       })
+  //       .catch((error) => {
+  //         // Handle errors if necessary
+  //         console.error("Error adding event to wish:", error);
+  //       });
+  //   }
+  // };
+
+  const handleAddToWish = (event) => {
+    const wishRef = ref(db, "wish");
+    const newWishKey = push(wishRef).key; // Generate a new key for the wish
+
+    if (newWishKey) {
+      set(ref(db, `wish/${newWishKey}`), event)
+        .then(() => {
+          // Event added to "wish" successfully
+          console.log("Event added to wish!");
+        })
+        .catch((error) => {
+          // Handle errors if necessary
+          console.error("Error adding event to wish:", error);
+        });
+    }
+  };
+
   const handleImagePress1 = () => {
     navigation.navigate("AddEvent");
   };
+
 
   const handleDeleteevent = (eventId) => {
     const eventRef = ref(db, `event/${eventId}`);
@@ -41,19 +78,36 @@ const AllEvents = () => {
   };
 
   const handleUpdateClick = (event) => {
-    const { id: eventId, eventName, location, date, time, organization } = event;
-    navigation.navigate('UpdateEvent', { eventId, eventName, location, date, time, organization });
+    const { id: eventId, eventName, location, date, time, organization, account } = event;
+    navigation.navigate('UpdateEvent', { eventId, eventName, location, date, time, organization, account });
   };
+
+  const navigateToBack = () => {
+    navigation.goBack();
+}
 
   return (
     <View style={styles.container}>
       <ImageBackground source={imagePath.background} style={styles.imgStyle}>
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.headerStyle}>
-            <Image source={imagePath.backarrow} />
+          <TouchableOpacity onPress={navigateToBack}>
+                        <Image source={imagePath.backarrow} />
+                    </TouchableOpacity>
             <Image source={imagePath.bell} />
           </View>
           <Text style={styles.AdvertiseTextStyle}> Events</Text>
+          <View style={styles.buttonContainer}>
+          </View>
+          <View style={styles.buttonContainer}>
+      {/* "My Events" button */}
+      <TouchableOpacity
+        style={styles.myEventsButton}
+        onPress={() => navigation.navigate("WishEvents")}
+      >
+        <Text style={styles.myEventsButtonText}>My Events</Text>
+      </TouchableOpacity>
+    </View>
         </SafeAreaView>
       </ImageBackground>
       <View
@@ -68,16 +122,17 @@ const AllEvents = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Card style={styles.Card}>
-              <TouchableOpacity onPress={() => handleEventPress(item)}>
+              <TouchableOpacity >
                 <Text style={styles.title}>{item.eventName}</Text>
-                <Text style={styles.body}>{item.location}</Text>
-                <Text style={styles.body}>{item.organization}</Text>
-                <Text style={styles.body}>{item.date}</Text>
-                <Text style={styles.body}>{item.time}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Location :</Text>{item.location}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Organization :</Text>{item.organization}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Date :</Text>{item.date}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Time :</Text>{item.time}</Text>
+                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Account No :</Text>{item.account}</Text>
 
                 <View style={styles.iconContainer}>
-                  <Btn btnText={"Donate"} />
-                  <Btn btnText={"Add"} />
+                 
+                  <Btn btnText={"Add"} onPress={() => handleAddToWish(item)} />
                   <TouchableOpacity onPress={() => handleUpdateClick(item)}>
                     <Icon
                       name="pencil"
@@ -238,6 +293,21 @@ const styles = StyleSheet.create({
   },
   buttonSpacer: {
     height: 20, // Specify the desired space height
+  },
+  buttonContainer: {
+    position: 'absolute',
+    top: 150, // Adjust the top value to position the button
+    right: 10, // Move the button to the other side
+  },
+  myEventsButton: {
+    position: "absolute",
+    top: 16, // Adjust the top value to position the button
+    right: 16, // Adjust the right value to position the button
+    backgroundColor: "transparent",
+  },
+  myEventsButtonText: {
+    color: "white",
+    fontSize: 18,
   },
 });
 

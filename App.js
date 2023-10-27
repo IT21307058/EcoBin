@@ -61,6 +61,8 @@ import EnvironmentOrganizationPage from "./src/Screen/Community/EnvironmentOrgan
 //Events
 import AddEvent from "./src/Screen/Events/AddEvent";
 import AllEvents from "./src/Screen/Events/AllEvents";
+import UpdateEvent from "./src/Screen/Events/UpdateEvent";
+import WishEvents from "./src/Screen/Events/WishEvents";
 
 //Premium
 import PremiumV from "./src/Screen/Premium/PremiumV";
@@ -249,6 +251,8 @@ function StackHomeNavigator() {
       {/* Event */}
       <Stack.Screen name="AddEvent" component={AddEvent} />
       <Stack.Screen name="AllEvents" component={AllEvents} />
+      <Stack.Screen name="UpdateEvent" component={UpdateEvent} />
+      <Stack.Screen name="WishEvents" component={WishEvents} />
       {/* Event */}
       <Stack.Screen name="PremiumV" component={PremiumV} />
       <Stack.Screen name="Subscription" component={Subscription} />
