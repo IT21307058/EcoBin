@@ -12,6 +12,7 @@ import { Card } from "react-native-paper";
 import Btn from "../../Components/Btn";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { remove } from "firebase/database";
+import { Button } from "react-native-elements/dist/buttons/Button";
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
@@ -71,6 +72,9 @@ const AllEvents = () => {
             <Image source={imagePath.bell} />
           </View>
           <Text style={styles.AdvertiseTextStyle}> Events</Text>
+          <View style={styles.buttonContainer}>
+            <Btn btnText={"My Events"} />
+          </View>
         </SafeAreaView>
       </ImageBackground>
       <View
@@ -255,6 +259,11 @@ const styles = StyleSheet.create({
   },
   buttonSpacer: {
     height: 20, // Specify the desired space height
+  },
+  buttonContainer: {
+    position: 'absolute',
+    top: 150, // Adjust the top value to position the button
+    right: 10, // Move the button to the other side
   },
 });
 
