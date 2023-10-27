@@ -6,6 +6,7 @@ import { Card } from "react-native-elements/dist/card/Card";
 import color from "../../styles/color";
 import { ImageBackground } from "react-native";
 import imagePath from "../../constants/imagePath";
+import Btn from "../../Components/Btn";
 import { moderateVerticalScale, moderateScale, scale } from "react-native-size-matters";
 
 
@@ -23,6 +24,11 @@ const WishEvents = () => {
     });
   }, []);
 
+  const handleDeleteevent = (wishId) => {
+    const wishRef = ref(db, `wish/${wishId}`);
+    remove(wishRef);
+  };
+
   return (
     <View style={styles.container}>
         <ImageBackground source={imagePath.background} style={styles.imgStyle}>
@@ -32,10 +38,6 @@ const WishEvents = () => {
             <Image source={imagePath.bell} />
           </View>
           <Text style={styles.AdvertiseTextStyle}> My Events</Text>
-          <View style={styles.buttonContainer}>
-          </View>
-          <View style={styles.buttonContainer}>
-    </View>
         </SafeAreaView>
       </ImageBackground>
 
@@ -51,6 +53,7 @@ const WishEvents = () => {
                 <Text style={styles.body}>{item.date}</Text>
                 <Text style={styles.body}>{item.time}</Text>
             {/* Display other wish details here */}
+            <Btn style={styles.Btn} btnText={"Remove"} onPress={() => handleDeleteevent(item.id)} />
           </View>
           </Card>
         )}
@@ -81,6 +84,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 16,
   },
+
   body: {
     fontSize: 15,
     marginTop: 8,
