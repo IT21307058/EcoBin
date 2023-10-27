@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         borderRadius: moderateScale(4),
         alignItems: 'center',
         justifyContent: 'center',
-        width: moderateScale(60)
+        width: moderateScale(60),
+        top: 10
     },
     btnTextStyle: {
         fontSize: scale(12),
