@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, ImageBackground } from 'react-native';
-import colors from '../../styles/color';
+// import colors from '../../styles/color';
 import { useNavigation } from '@react-navigation/native';
 import imagePath from '../../constants/imagePath';
 
