@@ -21,6 +21,8 @@ const AddEvent = () => {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [organization, setOrganization] = useState('');
+    const [account, setAccount] = useState('');
+
 
     const addEvent = () => {
 
@@ -33,6 +35,7 @@ const AddEvent = () => {
             date : date,
             time : time,
             organization : organization,
+            account: account,
         })
         .then(() => {
             console.log('Event added successfully');
@@ -41,6 +44,7 @@ const AddEvent = () => {
             setDate('');
             setTime('');
             setOrganization('');
+            setAccount('');
         })
         .catch((error) => {
             console.error('Error adding data:', error);
@@ -106,6 +110,13 @@ const AddEvent = () => {
                         placeholderTextColor='lightgray'
                         value={organization}
                         onChangeText={(text) => setOrganization(text)}
+                        style={styles.input}/>
+
+                    <TextInput
+                        placeholder="Account No"
+                        placeholderTextColor='lightgray'
+                        value={account}
+                        onChangeText={(text) => setAccount(text)}
                         style={styles.input}/>
 
 
