@@ -43,6 +43,16 @@ const firebaseConfig = {
   messagingSenderId: "653129935056",
   appId: "1:653129935056:web:df29ed94505f34aa5c96d5",
   measurementId: "G-SSPPR1VRR6",
+
+  //wasana
+  // apiKey: "AIzaSyA74LkNfeU0OuXwK8pSbwVajbMVyOeJ5ck",
+  // authDomain: "ecobin-bd5a2.firebaseapp.com",
+  // databaseURL: "https://ecobin-bd5a2-default-rtdb.asia-southeast1.firebasedatabase.app",
+  // projectId: "ecobin-bd5a2",
+  // storageBucket: "ecobin-bd5a2.appspot.com",
+  // messagingSenderId: "390253799917",
+  // appId: "1:390253799917:web:2cd27d189f3749d2c41fe4",
+  // measurementId: "G-PSK5SBZPL8"
 };
 
 if (firebase.apps.length === 0) {
