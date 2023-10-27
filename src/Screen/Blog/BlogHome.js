@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-// import ButtonComp from "../../Components/ButtonComp";
+import ButtonComp from "../../Components/ButtonComp";
 import colors from "../../styles/color";
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
