@@ -44,7 +44,7 @@ const firebaseConfig = {
   appId: "1:653129935056:web:df29ed94505f34aa5c96d5",
   measurementId: "G-SSPPR1VRR6",
 
-  //wasana
+  // //wasana
   // apiKey: "AIzaSyA74LkNfeU0OuXwK8pSbwVajbMVyOeJ5ck",
   // authDomain: "ecobin-bd5a2.firebaseapp.com",
   // databaseURL: "https://ecobin-bd5a2-default-rtdb.asia-southeast1.firebasedatabase.app",
