@@ -54,9 +54,6 @@ const AllEvents = () => {
     navigation.navigate("AddEvent");
   };
 
-  const handleMyWish = () => {
-    navigation.navigate("WishEvents");
-  };
 
   const handleDeleteevent = (eventId) => {
     const eventRef = ref(db, `event/${eventId}`);
@@ -78,9 +75,16 @@ const AllEvents = () => {
           </View>
           <Text style={styles.AdvertiseTextStyle}> Events</Text>
           <View style={styles.buttonContainer}>
-            <BtnYlw btnText={"My Events"} onPress={() => handleMyWish} />
-
           </View>
+          <View style={styles.buttonContainer}>
+      {/* "My Events" button */}
+      <TouchableOpacity
+        style={styles.myEventsButton}
+        onPress={() => navigation.navigate("WishEvents")}
+      >
+        <Text style={styles.myEventsButtonText}>My Events</Text>
+      </TouchableOpacity>
+    </View>
         </SafeAreaView>
       </ImageBackground>
       <View
@@ -270,6 +274,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 150, // Adjust the top value to position the button
     right: 10, // Move the button to the other side
+  },
+  myEventsButton: {
+    position: "absolute",
+    top: 16, // Adjust the top value to position the button
+    right: 16, // Adjust the right value to position the button
+    backgroundColor: "transparent",
+  },
+  myEventsButtonText: {
+    color: "white",
+    fontSize: 18,
   },
 });
 
