@@ -69,6 +69,7 @@ const OnlyProgram = () => {
   //         });
   // };
 
+  //filter only program data
   const filteredData = data.filter((item) => {
     // Filter the data based on the search query
     const normalizedQuery = searchQuery.toLowerCase();
