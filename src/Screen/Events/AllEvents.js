@@ -31,6 +31,23 @@ const AllEvents = () => {
     });
   }, []);
 
+  const handleAddToWish = (event) => {
+    const wishRef = ref(db, "wish"); // Assuming "wish" is the node where you want to store the data
+    const newWishKey = push(wishRef).key; // Generate a new key for the wish
+
+    if (newWishKey) {
+      set(ref(db, `wish/${newWishKey}`), event)
+        .then(() => {
+          // Event added to "wish" successfully
+          console.log("Event added to wish!");
+        })
+        .catch((error) => {
+          // Handle errors if necessary
+          console.error("Error adding event to wish:", error);
+        });
+    }
+  };
+
   const handleImagePress1 = () => {
     navigation.navigate("AddEvent");
   };
@@ -77,7 +94,7 @@ const AllEvents = () => {
 
                 <View style={styles.iconContainer}>
                   <Btn btnText={"Donate"} />
-                  <Btn btnText={"Add"} />
+                  <Btn btnText={"Add"} onPress={() => handleAddToWish(item)} />
                   <TouchableOpacity onPress={() => handleUpdateClick(item)}>
                     <Icon
                       name="pencil"
