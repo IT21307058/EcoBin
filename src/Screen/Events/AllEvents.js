@@ -33,25 +33,13 @@ const AllEvents = () => {
     });
   }, []);
 
-  const handleAddToWish = (event) => {
-    const wishRef = ref(db, "wish"); // Assuming "wish" is the node where you want to store the data
-    const newWishKey = push(wishRef).key; // Generate a new key for the wish
-
-    if (newWishKey) {
-      set(ref(db, `wish/${newWishKey}`), event)
-        .then(() => {
-          // Event added to "wish" successfully
-          console.log("Event added to wish!");
-        })
-        .catch((error) => {
-          // Handle errors if necessary
-          console.error("Error adding event to wish:", error);
-        });
-    }
-  };
 
   const handleImagePress1 = () => {
     navigation.navigate("AddEvent");
+  };
+
+  const handleMyWish = () => {
+    navigation.navigate("WishEvents");
   };
 
   const handleDeleteevent = (eventId) => {
@@ -74,7 +62,8 @@ const AllEvents = () => {
           </View>
           <Text style={styles.AdvertiseTextStyle}> Events</Text>
           <View style={styles.buttonContainer}>
-            <BtnYlw btnText={"My Events"} />
+            <BtnYlw btnText={"My Events"} onPress={() => handleMyWish} />
+
           </View>
         </SafeAreaView>
       </ImageBackground>
