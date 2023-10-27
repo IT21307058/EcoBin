@@ -22,6 +22,7 @@ const OnePost = ({ route }) => {
     const [description, setDescription] = useState(item.description);
 
 
+    //delete function
     const handleDelete = (itemId) => {
         // Remove the item from Firebase Realtime Database
         const advertiseRef = ref(db, 'community/' + itemId);
