@@ -7,6 +7,8 @@ import color from "../../styles/color";
 import { ImageBackground } from "react-native";
 import imagePath from "../../constants/imagePath";
 import Btn from "../../Components/Btn";
+import BtnRed from "../../Components/BtnRed";
+import { remove } from "firebase/database";
 import { moderateVerticalScale, moderateScale, scale } from "react-native-size-matters";
 
 
@@ -54,7 +56,7 @@ const WishEvents = () => {
                 <Text style={styles.body}>{item.time}</Text>
             {/* Display other wish details here */}
             {/* <Btn style={styles.Btn} btnText={"Remove"} onPress={() => handleDeleteevent(item.id)} /> */}
-            <Btn
+            <BtnRed
             btnText={"Remove"}
             onPress={() => handleDeleteevent(item.id)}
             style={styles.removeButton} // Add this style
