@@ -27,7 +27,7 @@ const BtnYlw = ({
 const styles = StyleSheet.create({
     btnStyle: {
         height: moderateScale(30),
-        backgroundColor: colors.green,
+        backgroundColor: colors.yellow,
         borderRadius: moderateScale(4),
         alignItems: 'center',
         justifyContent: 'center',

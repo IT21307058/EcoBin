@@ -73,7 +73,7 @@ const AllEvents = () => {
           </View>
           <Text style={styles.AdvertiseTextStyle}> Events</Text>
           <View style={styles.buttonContainer}>
-            <Btn btnText={"My Events"} />
+            <BtnYlw btnText={"My Events"} />
           </View>
         </SafeAreaView>
       </ImageBackground>
