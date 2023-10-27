@@ -6,7 +6,7 @@ import { moderateScale, scale } from 'react-native-size-matters';
 import colors from '../styles/color'
 
 
-const Btn = ({
+const BtnYlw = ({
     btnText,
     btnStyle = {},
     onPress = () => { },
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default Btn;
+export default BtnYlw;
