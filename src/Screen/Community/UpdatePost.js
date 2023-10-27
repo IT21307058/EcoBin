@@ -28,6 +28,7 @@ const UpdatePost = ({ route }) => {
     // Format the date as a string (you can customize the format)
     const formattedDate = currentDate.toISOString();
 
+    //update post function
     const updateData = () => {
         const communityRef = ref(db, `community/${item.id}`);
         set(communityRef, {
