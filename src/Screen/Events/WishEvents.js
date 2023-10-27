@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import { db } from "../../../config";
 import { ref, onValue } from "firebase/database";
 import { Card } from "react-native-elements/dist/card/Card";
+import color from "../../styles/color";
 
 const WishEvents = () => {
   const [WishEvents, setWishEvents] = useState([]);
@@ -65,6 +66,16 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     padding: 16,
     marginBottom: 16,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: color.themeColor,
+  },
+  body: {
+    fontSize: 15,
+    marginTop: 8,
+    color: color.blackOpacity80,
   },
 });
 
