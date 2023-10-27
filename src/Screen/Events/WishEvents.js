@@ -53,7 +53,12 @@ const WishEvents = () => {
                 <Text style={styles.body}>{item.date}</Text>
                 <Text style={styles.body}>{item.time}</Text>
             {/* Display other wish details here */}
-            <Btn style={styles.Btn} btnText={"Remove"} onPress={() => handleDeleteevent(item.id)} />
+            {/* <Btn style={styles.Btn} btnText={"Remove"} onPress={() => handleDeleteevent(item.id)} /> */}
+            <Btn
+            btnText={"Remove"}
+            onPress={() => handleDeleteevent(item.id)}
+            style={styles.removeButton} // Add this style
+          />
           </View>
           </Card>
         )}
@@ -134,6 +139,7 @@ const styles = StyleSheet.create({
   icon: {
     marginHorizontal: 5,
   },
+  
 });
 
 export default WishEvents;
