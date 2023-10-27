@@ -9,6 +9,7 @@ import colors from "../../styles/color";
 import {moderateScale,moderateVerticalScale,scale,} from "react-native-size-matters";
 import { ref, set, push } from "firebase/database";
 import { Card } from "react-native-paper";
+import BtnYlw from "../../Components/BtnYlw";
 import Btn from "../../Components/Btn";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { remove } from "firebase/database";
