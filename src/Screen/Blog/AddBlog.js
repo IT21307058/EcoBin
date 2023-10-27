@@ -11,7 +11,7 @@ import {
   ImageBackground,
 } from "react-native";
 import ButtonComp from "../../Components/ButtonComp";
-// import colors from "../../styles/color";
+import colors from "../../styles/color";
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../../../config";
 import { ref, set, push } from "firebase/database";
