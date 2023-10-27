@@ -27,7 +27,11 @@ const WishEvents = () => {
         renderItem={({ item }) => (
             <Card style={styles.Card}>
           <View style={styles.item}>
-            <Text style={styles.itemText}>{item.eventName}</Text>
+            <Text style={styles.title}>{item.eventName}</Text>
+            <Text style={styles.body}>{item.location}</Text>
+                <Text style={styles.body}>{item.organization}</Text>
+                <Text style={styles.body}>{item.date}</Text>
+                <Text style={styles.body}>{item.time}</Text>
             {/* Display other wish details here */}
           </View>
           </Card>
