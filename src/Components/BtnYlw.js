@@ -26,16 +26,16 @@ const BtnYlw = ({
 // define your styles
 const styles = StyleSheet.create({
     btnStyle: {
-        height: moderateScale(30),
+        height: moderateScale(35),
         backgroundColor: colors.yellow,
         borderRadius: moderateScale(4),
         alignItems: 'center',
         justifyContent: 'center',
-        width: moderateScale(60)
+        width: moderateScale(85)
     },
     btnTextStyle: {
         fontSize: scale(12),
-        color: 'white',
+        color: 'black',
         fontWeight: 'bold',
         textTransform: 'uppercase',
     }
