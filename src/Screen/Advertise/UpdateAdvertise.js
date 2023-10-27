@@ -28,6 +28,7 @@ const UpdateAdvertise = ({ route }) => {
     const formattedDate = currentDate.toISOString();
 
 
+    //update function advertise
     const updateData = () => {
         const advertiseRef = ref(db, `advertise/${item.id}`);
         set(advertiseRef, {
