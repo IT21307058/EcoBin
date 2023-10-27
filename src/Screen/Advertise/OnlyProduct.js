@@ -17,7 +17,7 @@ const OnlyProduct = () => {
 
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const DESCRIPTION_CHARACTER_LIMIT = 30;
+  const DESCRIPTION_CHARACTER_LIMIT = 20;
 
   // const handleImagePress = () => {
   //     // Navigate to the 'UpdateAdvertise' screen when the image is pressed
