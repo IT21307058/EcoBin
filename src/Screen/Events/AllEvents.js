@@ -82,12 +82,18 @@ const AllEvents = () => {
     navigation.navigate('UpdateEvent', { eventId, eventName, location, date, time, organization, account });
   };
 
+  const navigateToBack = () => {
+    navigation.goBack();
+}
+
   return (
     <View style={styles.container}>
       <ImageBackground source={imagePath.background} style={styles.imgStyle}>
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.headerStyle}>
-            <Image source={imagePath.backarrow} />
+          <TouchableOpacity onPress={navigateToBack}>
+                        <Image source={imagePath.backarrow} />
+                    </TouchableOpacity>
             <Image source={imagePath.bell} />
           </View>
           <Text style={styles.AdvertiseTextStyle}> Events</Text>
