@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, SafeAreaView, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-// import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { firebase } from '../../../config'
 import imagePath from '../../constants/imagePath';
 import colors from '../../styles/color';
@@ -11,6 +11,8 @@ import ButtonComp from '../../Components/ButtonComp';
 
 const UserAccount = () => {
   const [name, setName] = useState("");
+  const navigation = useNavigation();
+
 
   useEffect(() => {
     firebase
@@ -26,6 +28,10 @@ const UserAccount = () => {
         }
       });
   }, []);
+
+  const handleNavigateToPremium = () => {
+    navigation.navigate('PremiumV');
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -82,7 +88,7 @@ const UserAccount = () => {
           <Text style={{ fontWeight: 'bold', fontSize: 22, color:colors.white }}>Sign Out</Text>
         </TouchableOpacity> */}
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleNavigateToPremium}>
         <Text style={{ color: "#FFD700", alignSelf: "center", marginTop: 20, fontSize: 20, fontWeight: "bold" }}>Become a Premium Member</Text>
       </TouchableOpacity>
     </SafeAreaView>

@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const TopTabs = createMaterialTopTabNavigator();
 
-import colors from "../EcoBin/src/styles/color";
+import color from "./src/styles/color";
 
 import AdvertiseHome from "./src/Screen/Advertise/AdvertiseHome";
 import AddAdvertise from "./src/Screen/Advertise/AddAdvertise";
@@ -57,6 +57,15 @@ import CommunityHome from "./src/Screen/Community/CommunityHome";
 import EducationalUserPage from "./src/Screen/Community/EducationalUserPage";
 import EnvironmentOrganizationPage from "./src/Screen/Community/EnvironmentOrganizationPage";
 
+
+//Events
+import AddEvent from "./src/Screen/Events/AddEvent";
+import AllEvents from "./src/Screen/Events/AllEvents";
+
+//Premium
+import PremiumV from "./src/Screen/Premium/PremiumV";
+import Subscription from "./src/Screen/Premium/Subscription";
+
 import Login from "./src/Screen/Auth/Login";
 import Registeration from "./src/Screen/Auth/Registeration";
 import SplashScreen from "./src/Screen/Auth/SplashScreen";
@@ -65,13 +74,13 @@ function TopTabsGroup() {
   return (
     <TopTabs.Navigator
       screenOptions={{
-        tabBarInactiveTintColor: colors.blackOpacity50,
-        tabBaractiveTintColor: colors.themeColor,
+        tabBarInactiveTintColor: color.blackOpacity50,
+        tabBaractiveTintColor: color.themeColor,
         style: {
-          backgroundColor: colors.themeColor, // Set the background color of the tab bar
+          backgroundColor: color.themeColor, // Set the background color of the tab bar
         },
         indicatorStyle: {
-          backgroundColor: colors.themeColor, // Set the indicator (highlight) color
+          backgroundColor: color.themeColor, // Set the indicator (highlight) color
         },
       }}
     >
@@ -112,8 +121,8 @@ function TabNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarInactiveTintColor: colors.blackOpacity50,
-        tabBaractiveTintColor: colors.themeColor,
+        tabBarInactiveTintColor: color.blackOpacity50,
+        tabBaractiveTintColor: color.themeColor,
       }}
     >
       <Tab.Screen
@@ -125,8 +134,8 @@ function TabNavigator() {
               <Image
                 style={{
                   tintColor: focused
-                    ? colors.themeColor
-                    : colors.blackOpacity50,
+                    ? color.themeColor
+                    : color.blackOpacity50,
                 }}
                 source={imagePath.blueHome}
               />
@@ -143,8 +152,8 @@ function TabNavigator() {
               <Image
                 style={{
                   tintColor: focused
-                    ? colors.themeColor
-                    : colors.blackOpacity50,
+                    ? color.themeColor
+                    : color.blackOpacity50,
                 }}
                 source={imagePath.community}
               />
@@ -161,8 +170,8 @@ function TabNavigator() {
               <Image
                 style={{
                   tintColor: focused
-                    ? colors.themeColor
-                    : colors.blackOpacity50,
+                    ? color.themeColor
+                    : color.blackOpacity50,
                 }}
                 source={imagePath.blog}
               />
@@ -179,8 +188,8 @@ function TabNavigator() {
               <Image
                 style={{
                   tintColor: focused
-                    ? colors.themeColor
-                    : colors.blackOpacity50,
+                    ? color.themeColor
+                    : color.blackOpacity50,
                 }}
                 source={imagePath.user}
               />
@@ -237,6 +246,13 @@ function StackHomeNavigator() {
       <Stack.Screen name="AddFarm" component={AddFarm} />
       <Stack.Screen name="OneFarm" component={OneFarm} />
       <Stack.Screen name="UpdateFarm" component={UpdateFarm} />
+      {/* Event */}
+      <Stack.Screen name="AddEvent" component={AddEvent} />
+      <Stack.Screen name="AllEvents" component={AllEvents} />
+      {/* Event */}
+      <Stack.Screen name="PremiumV" component={PremiumV} />
+      <Stack.Screen name="Subscription" component={Subscription} />
+
     </Stack.Navigator>
   );
 }
