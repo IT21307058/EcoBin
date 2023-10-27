@@ -32,10 +32,10 @@ import UpdateBlog from "./src/Screen/Blog/UpdateBlog"; // Import the UpdateBlog 
 import DetailedBlogView from "./src/Screen/Blog/DetailedBlogView"; // Import the DetailedBlogView screen
 
 //Farms
-// import FarmHome from "./src/Screen/FoodSwap/FarmHome"; // Import the FarmHome screen
-// import AddFarm from "./src/Screen/FoodSwap/AddFarm"; // Import the AddFarm screen
-// import OneFarm from "./src/Screen/FoodSwap/OneFarm"; // Import the OneFarm screen
-// import UpdateFarm from "./src/Screen/FoodSwap/UpdateFarm"; // Import the UpdateFarm screen
+import FarmHome from "./src/Screen/FoodSwap/FarmHome"; // Import the FarmHome screen
+import AddFarm from "./src/Screen/FoodSwap/AddFarm"; // Import the AddFarm screen
+import OneFarm from "./src/Screen/FoodSwap/OneFarm"; // Import the OneFarm screen
+import UpdateFarm from "./src/Screen/FoodSwap/UpdateFarm"; // Import the UpdateFarm screen
 
 import AllGoal from "./src/Screen/Goal/AllGoal";
 import AddGoal from "./src/Screen/Goal/AddGoal";
