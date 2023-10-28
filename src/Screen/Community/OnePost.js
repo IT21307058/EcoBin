@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, ImageBackground, SafeAreaView, FlatList, Button
 import React, { useState } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
-// import dummyData from './dummyData';
 import ButtonComp from '../../Components/ButtonComp';
 import colors from '../../styles/color';
 
