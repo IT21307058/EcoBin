@@ -43,12 +43,8 @@ const AddGoal = () => {
 
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
-  // const [date, setDate] = useState(new Date());
-  // const [showDatePicker, setShowDatePicker] = useState(false);
 
   
-
-
 
   function handleChange(propDate) {
     setDate(propDate);
