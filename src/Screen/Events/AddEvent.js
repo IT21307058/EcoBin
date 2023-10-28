@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, StyleSheet, Image, TextInput } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
 import ButtonComp from "../../Components/ButtonComp";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ref, set, push } from 'firebase/database';
 import { db } from "../../../config";
 import colors from '../../styles/color';
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 import imagePath from "../../constants/imagePath";
 import { moderateScale, moderateVerticalScale, scale } from "react-native-size-matters";
 
@@ -15,6 +17,8 @@ const AddEvent = () => {
   const [time, setTime] = useState('');
   const [organization, setOrganization] = useState('');
   const [account, setAccount] = useState('');
+  const [selectedTime, setSelectedTime] = useState(new Date());
+  const [showTimePicker, setShowTimePicker] = useState(false);
 
   const [error, setError] = useState(null);
 
@@ -86,13 +90,33 @@ const AddEvent = () => {
               onChangeText={(text) => setDate(text)}
               style={styles.input}
             />
-            <TextInput
+            {/* <TextInput
               placeholder="Time"
               placeholderTextColor='lightgray'
               value={time}
               onChangeText={(text) => setTime(text)}
               style={styles.input}
+            /> */}
+
+
+       
+          <TouchableOpacity onPress={() => setShowTimePicker(true)} style={styles.input}>
+            <Text>{selectedTime.toLocaleTimeString()}</Text>
+          </TouchableOpacity>
+          {showTimePicker && (
+            <DateTimePicker
+              value={selectedTime}
+              mode="time"
+              display="default"
+              onChange={(event, selectedDate) => {
+                setShowTimePicker(false);
+                if (selectedDate) {
+                  setSelectedTime(selectedDate);
+                }
+              }}
             />
+          )}
+
             <TextInput
               placeholder="Organization"
               placeholderTextColor='lightgray'
@@ -167,6 +191,11 @@ const styles = StyleSheet.create({
   errorText: {
     color: 'red',
     marginBottom: 10,
+  },
+  inputContainer: {
+    backgroundColor: "white",
+    borderRadius: 10,
+    marginBottom: moderateVerticalScale(16),
   },
 });
 
