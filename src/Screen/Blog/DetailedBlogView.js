@@ -13,6 +13,7 @@ const DetailedBlogView = ({ route }) => {
       source={imagePath.background}
       style={styles.backgroundImage}
     >
+      <View style={styles.container}>
       <SafeAreaView style={styles.container}>
         <View style={styles.headerStyle}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -33,6 +34,7 @@ const DetailedBlogView = ({ route }) => {
           </View>
         </View>
       </SafeAreaView>
+      </View>
     </ImageBackground>
   );
 };
