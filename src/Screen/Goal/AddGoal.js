@@ -50,15 +50,7 @@ const AddGoal = () => {
   //   setShowDatePicker(!showDatePicker);
   // };
 
-  // const onChange = (event, selectedDate) => {
-  //   if (event.type === "set") {
-  //     const currentDate = selectedDate || date;
-  //     setDate(currentDate);
-  //     toggleDatePicker();
-  //   } else {
-  //     toggleDatePicker();
-  //   }
-  // };
+
 
   function handleChange(propDate) {
     setDate(propDate);
