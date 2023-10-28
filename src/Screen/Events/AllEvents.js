@@ -18,8 +18,8 @@ import { remove } from "firebase/database";
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
-  const [showTimePicker, setShowTimePicker] = useState(false);
-const [selectedTime, setSelectedTime] = useState(new Date());
+  const [searchQuery, setSearchQuery] = useState('');
+
 
   const navigation = useNavigation();
 
@@ -37,22 +37,26 @@ const [selectedTime, setSelectedTime] = useState(new Date());
     });
   }, []);
 
-  // const handleAddToWish = (event) => {
-  //   const wishRef = ref(db, "wish"); // Assuming "wish" is the node where you want to store the data
-  //   const newWishKey = push(wishRef).key; // Generate a new key for the wish
+  const handleSingleItem = (item) => {
+    navigation.navigate('OneEvent', { item });
+  };
 
-  //   if (newWishKey) {
-  //     set(ref(db, `wish/${newWishKey}`), event)
-  //       .then(() => {
-  //         // Event added to "wish" successfully
-  //         console.log("Event added to wish!");
-  //       })
-  //       .catch((error) => {
-  //         // Handle errors if necessary
-  //         console.error("Error adding event to wish:", error);
-  //       });
-  //   }
-  // };
+  const filteredData = events.filter((item) => {
+    const normalizedQuery = searchQuery.toLowerCase();
+    return item.location.toLowerCase().includes(normalizedQuery);
+  });
+
+  const renderItem = ({ item }) => {
+    return (
+      <TouchableOpacity onPress={() => handleSingleItem(item)}>
+        <View style={styles.itemContainer}>
+          <Text style={styles.title}>Location :  {item.location}</Text>
+          <Text style={styles.body}>Time: {item.time}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
 
   const handleAddToWish = (event) => {
     const wishRef = ref(db, "wish");
@@ -74,6 +78,8 @@ const [selectedTime, setSelectedTime] = useState(new Date());
   const handleImagePress1 = () => {
     navigation.navigate("AddEvent");
   };
+
+
 
 
   const handleDeleteevent = (eventId) => {
@@ -114,6 +120,7 @@ const [selectedTime, setSelectedTime] = useState(new Date());
     </View>
         </SafeAreaView>
       </ImageBackground>
+      
       <View
         style={{
           marginTop: moderateVerticalScale(14),
@@ -121,8 +128,14 @@ const [selectedTime, setSelectedTime] = useState(new Date());
           flex: 1,
         }}
       >
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          value={searchQuery}
+          onChangeText={(text) => setSearchQuery(text)}
+        />
         <FlatList
-          data={events}
+          data={filteredData}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Card style={styles.Card}>
