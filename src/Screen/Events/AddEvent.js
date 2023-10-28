@@ -17,8 +17,6 @@ const AddEvent = () => {
   const [time, setTime] = useState('');
   const [organization, setOrganization] = useState('');
   const [account, setAccount] = useState('');
-  const [selectedTime, setSelectedTime] = useState(new Date());
-  const [showTimePicker, setShowTimePicker] = useState(false);
 
   const [error, setError] = useState(null);
 
