@@ -40,16 +40,7 @@ const OnePost = ({ route }) => {
                       },
                     ],
                     {
-                    //   titleStyle: {
-                    //     color: 'green', // Change the title text color
-                    //     fontSize: 20,    // Change the title font size
-                    //   },
-                    //   containerStyle: {
-                    //     backgroundColor: 'lightgray', // Change the background color of the alert
-                    //   },
-                    //   contentContainerStyle: {
-                    //     alignItems: 'center', // Center the content inside the alert
-                    //   },
+                  
                     }
                   );
             })
