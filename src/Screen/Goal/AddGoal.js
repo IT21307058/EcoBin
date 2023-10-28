@@ -19,7 +19,7 @@ import {
   moderateVerticalScale,
 } from "react-native-size-matters";
 import imagePath from "../../constants/imagePath";
-// import dummyData from './dummyData';
+import dummyData from './dummyData';
 import ButtonComp from "../../Components/ButtonComp";
 import colors from "../../styles/color";
 // import TextInputWithLabel from '../../Components/TextInputWithLabel';
