@@ -24,8 +24,6 @@ import ButtonComp from "../../Components/ButtonComp";
 import colors from "../../styles/color";
 // import TextInputWithLabel from '../../Components/TextInputWithLabel';
 import { useNavigation } from "@react-navigation/native";
-// import { Picker } from '@react-native-picker/picker';
-//   import DatePicker from "react-native-datepicker";
 //   import DateTimePicker from "@react-native-community/datetimepicker";
 import DatePicker, { getFormatedDate } from "react-native-modern-datepicker";
 
