@@ -113,9 +113,9 @@ function TabNavigator() {
   if (!user) {
     return (
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Registeration" component={Registeration} />
-        <Stack.Screen name="splash" component={SplashScreen} />
       </Stack.Navigator>
     );
   }
