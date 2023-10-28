@@ -7,13 +7,15 @@ import { moderateScale } from "react-native-size-matters";
 import Btn from "../../Components/Btn";
 
 const UpdateEvent = ({ route, navigation }) => {
-  const { eventId, eventName, location, date, time, organization } = route.params;
+  const { eventId, eventName, location, date, time, organization, account } = route.params;
 
   const [updatedEventName, setUpdatedEventName] = useState(eventName);
   const [updatedLocation, setUpdatedLocation] = useState(location);
   const [updatedDate, setUpdatedDate] = useState(date);
   const [updatedTime, setUpdatedTime] = useState(time);
   const [updatedOrganization, setUpdatedOrganization] = useState(organization);
+  const [updatedAccount, setUpdatedAccount] = useState(account);
+
 
   const handleUpdateEvent = () => {
     const eventRef = ref(db, `event/${eventId}`);
@@ -23,6 +25,7 @@ const UpdateEvent = ({ route, navigation }) => {
       date: updatedDate,
       time: updatedTime,
       organization: updatedOrganization,
+      account: updatedAccount,
     })
       .then(() => {
         console.log('Event data updated successfully');
@@ -65,6 +68,12 @@ const UpdateEvent = ({ route, navigation }) => {
         placeholder="Organization"
         value={updatedOrganization}
         onChangeText={(text) => setUpdatedOrganization(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Account No"
+        value={updatedAccount}
+        onChangeText={(text) => setUpdatedAccount(text)}
       />
       <TouchableOpacity style={styles.updateButton} onPress={handleUpdateEvent}>
         <Text style={styles.buttonText}>Update Event</Text>

@@ -9,11 +9,15 @@ import imagePath from "../../constants/imagePath";
 import Btn from "../../Components/Btn";
 import BtnRed from "../../Components/BtnRed";
 import { remove } from "firebase/database";
+import { useNavigation } from "@react-navigation/native";
+
 import { moderateVerticalScale, moderateScale, scale } from "react-native-size-matters";
 
 
 const WishEvents = () => {
   const [WishEvents, setWishEvents] = useState([]);
+  const navigation = useNavigation();
+
 
   useEffect(() => {
     const wishRef = ref(db, "wish"); // Assuming "wish" is the node where your wish data is stored
@@ -32,7 +36,9 @@ const WishEvents = () => {
         <ImageBackground source={imagePath.background} style={styles.imgStyle}>
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.headerStyle}>
+          <TouchableOpacity onPress={() => navigation.navigate("AllEvents")}>
             <Image source={imagePath.backarrow} />
+          </TouchableOpacity>
             <Image source={imagePath.bell} />
           </View>
           <Text style={styles.AdvertiseTextStyle}> My Events</Text>
@@ -50,7 +56,6 @@ const WishEvents = () => {
                 <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Organization :</Text>{item.organization}</Text>
                 <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Date :</Text>{item.date}</Text>
                 <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Time :</Text>{item.time}</Text>
-                <Text style={styles.body}><Text style={{ fontWeight: "bold" }}>Account No :</Text>{item.account}</Text>
           </View>
           </Card>
         )}
