@@ -87,10 +87,7 @@ const FeedbackPage = ({ route }) => {
             }
         });
 
-        // return () => {
-        //     // Unsubscribe from the Firebase listener when the component unmounts
-        //     off(feedbackRef);
-        // };
+        
     }, [item.id]);
 
     return (
