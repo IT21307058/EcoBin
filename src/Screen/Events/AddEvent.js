@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ref, set, push } from 'firebase/database';
 import { db } from "../../../config";
 import colors from '../../styles/color';
-import DateTimePicker from '@react-native-community/datetimepicker';
+// import DateTimePicker from '@react-native-community/datetimepicker';
 
 import imagePath from "../../constants/imagePath";
 import { moderateScale, moderateVerticalScale, scale } from "react-native-size-matters";
@@ -24,7 +24,7 @@ const AddEvent = () => {
 
   const addEvent = () => {
     // Basic form validation
-    if (!eventName || !location || !date || !time || !organization || !account) {
+    if (!eventName || !location || !date || !organization || !account) {
       setError("Please fill in all fields");
       return;
     }
@@ -90,14 +90,14 @@ const AddEvent = () => {
               onChangeText={(text) => setDate(text)}
               style={styles.input}
             />
-            {/* <TextInput
+            <TextInput
               placeholder="Time"
               placeholderTextColor='lightgray'
               value={time}
               onChangeText={(text) => setTime(text)}
               style={styles.input}
-            /> */}
-
+            />
+{/* 
 
        
           <TouchableOpacity onPress={() => setShowTimePicker(true)} style={styles.input}>
@@ -115,7 +115,7 @@ const AddEvent = () => {
                 }
               }}
             />
-          )}
+          )} */}
 
             <TextInput
               placeholder="Organization"
