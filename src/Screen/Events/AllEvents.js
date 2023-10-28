@@ -13,10 +13,14 @@ import BtnYlw from "../../Components/BtnYlw";
 import Btn from "../../Components/Btn";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { remove } from "firebase/database";
-import { Button } from "react-native-elements/dist/buttons/Button";
+// import DateTimePicker from '@react-native-community/datetimepicker';
+
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
+  const [showTimePicker, setShowTimePicker] = useState(false);
+const [selectedTime, setSelectedTime] = useState(new Date());
+
   const navigation = useNavigation();
 
   useEffect(() => {
