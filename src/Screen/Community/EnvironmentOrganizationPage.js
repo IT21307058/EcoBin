@@ -61,6 +61,7 @@ const EnvironmentOrganizationPage = () => {
         navigation.navigate('FeedbackPage', { item });
     };
 
+    //filter organization function
     const filteredData = data.filter((item) => {
         // Filter the data based on the search query
         const normalizedQuery = searchQuery.toLowerCase();

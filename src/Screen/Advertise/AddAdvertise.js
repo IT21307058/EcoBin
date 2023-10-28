@@ -33,6 +33,7 @@ const AddAdvertise = () => {
   const formattedDate = currentDate.toISOString();
 
 
+  //add advertise function
     const dataAddOn = () => {
         // Use the Firebase Realtime Database reference to push (add) data
         const advertiseRef = ref(db, 'advertise');

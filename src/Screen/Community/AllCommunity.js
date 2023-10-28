@@ -34,6 +34,7 @@ const AllCommunity = () => {
         navigation.navigate('AddPost');
     };
 
+    //retrive post data function
     useEffect(() => {
         // Use the Firebase Realtime Database reference to listen for data changes
         const communityRef = ref(db, 'community');

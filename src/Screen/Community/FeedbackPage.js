@@ -38,6 +38,7 @@ const FeedbackPage = ({ route }) => {
     const [comments, setComments] = useState([]);
 
 
+    //add post function
     const dataAddOn = () => {
         // Use the Firebase Realtime Database reference to push (add) data
         const feedcommunityRef = ref(db, `feedbackCommunity/${item.id}`);

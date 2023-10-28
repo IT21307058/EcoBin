@@ -42,6 +42,7 @@ const AddPost = () => {
   // Format the date as a string (you can customize the format)
   const formattedDate = currentDate.toISOString();
 
+  //add post function
   const dataAddOn = () => {
     // Use the Firebase Realtime Database reference to push (add) data
     const communityRef = ref(db, "community");

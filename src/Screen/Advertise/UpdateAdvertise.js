@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView, TextInput, FlatList, Button, Image, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
 import imagePath from '../../constants/imagePath';
@@ -28,6 +28,7 @@ const UpdateAdvertise = ({ route }) => {
     const formattedDate = currentDate.toISOString();
 
 
+    //update function advertise
     const updateData = () => {
         const advertiseRef = ref(db, `advertise/${item.id}`);
         set(advertiseRef, {
@@ -44,7 +45,7 @@ const UpdateAdvertise = ({ route }) => {
                     [
                       {
                         text: 'OK',
-                        onPress: () => navigation.navigate('CommunityHome'), // Reset dataAdded state
+                        // onPress: () => navigation.navigate('CommunityHome'), // Reset dataAdded state
                         style: 'cancel', // You can use 'destructive' or 'default' for different styles
                       },
                     ],

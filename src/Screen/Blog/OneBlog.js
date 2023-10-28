@@ -50,42 +50,44 @@ const OneBlog = ({ route }) => {
       source={imagePath.background}
       style={styles.backgroundImage}
     >
-      <SafeAreaView style={styles.container}>
-        <View style={styles.headerStyle}>
-          <TouchableOpacity onPress={() => navigation.navigate("BlogHome")}>
-            <Image source={imagePath.bluearrow} />
-          </TouchableOpacity>
-          <Image source={imagePath.bluebell} />
-        </View>
-        <View style={styles.content}>
-          <Text style={styles.headerText}>Edit Blog</Text>
-          <View style={styles.card}>
-            <Text style={styles.label}>Topic:</Text>
-            <Text style={styles.value}>{item.topic}</Text>
-
-            <Text style={styles.label}>Body:</Text>
-            <Text style={styles.value}>{item.body}</Text>
-
-            <ButtonComp
-              btnText={"Update"}
-              btnStyle={{ backgroundColor: "#32CD32" }} // green
-              btnTextStyle={{ fontSize: 20 }} // increased font size
-              onPress={() => handleUpdate(item)}
-            />
-            <Text />
-            <ButtonComp
-              btnText={"Delete"}
-              btnStyle={{
-                backgroundColor: "#FF0000", // red
-                borderWidth: 1,
-                borderColor: "#FF0000",
-              }}
-              btnTextStyle={{ color: "#FFFFFF", fontSize: 20 }} // white, increased font size
-              onPress={() => handleDelete(item.id)}
-            />
+      <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+          <View style={styles.headerStyle}>
+            <TouchableOpacity onPress={() => navigation.navigate("BlogHome")}>
+              <Image source={imagePath.bluearrow} />
+            </TouchableOpacity>
+            <Image source={imagePath.bluebell} />
           </View>
-        </View>
-      </SafeAreaView>
+          <View style={styles.content}>
+            <Text style={styles.headerText}>Edit Blog</Text>
+            <View style={styles.card}>
+              <Text style={styles.label}>Topic:</Text>
+              <Text style={styles.value}>{item.topic}</Text>
+
+              <Text style={styles.label}>Body:</Text>
+              <Text style={styles.value}>{item.body}</Text>
+
+              <ButtonComp
+                btnText={"Update"}
+                btnStyle={{ backgroundColor: "#32CD32" }} // green
+                btnTextStyle={{ fontSize: 20 }} // increased font size
+                onPress={() => handleUpdate(item)}
+              />
+              <Text />
+              <ButtonComp
+                btnText={"Delete"}
+                btnStyle={{
+                  backgroundColor: "#FF0000", // red
+                  borderWidth: 1,
+                  borderColor: "#FF0000",
+                }}
+                btnTextStyle={{ color: "#FFFFFF", fontSize: 20 }} // white, increased font size
+                onPress={() => handleDelete(item.id)}
+              />
+            </View>
+          </View>
+        </SafeAreaView>
+      </View>
     </ImageBackground>
   );
 };
