@@ -15,7 +15,7 @@ const OnePost = ({ route }) => {
 
     const { item } = route.params; // Get the item data passed from the previous screen
 
-    // const [advertiseType, setAdvertiseType] = useState(item.advertiseType);
+    
     const [communityType, setCommunityType] = useState(item.communityType);
     const [topic, setTopic] = useState(item.topic);
     const [description, setDescription] = useState(item.description);
