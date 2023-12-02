@@ -20,22 +20,51 @@ As we delve into the details of this project, we will explore its objectives, me
 
 
 ## Snap Shots of UI
-![ecobin_Page_01](https://github.com/IT21307058/EcoBin/assets/96247301/9ccbe463-c596-4969-a009-36cf81b4900b){:width="50%"}
-![ecobin_Page_02](https://github.com/IT21307058/EcoBin/assets/96247301/bc7b7ab4-8672-4244-8591-1eea183d6faa){:width="50%"}
-![ecobin_Page_03](https://github.com/IT21307058/EcoBin/assets/96247301/d8eec44d-6697-41b7-b855-cc6b71511612){:width="50%"}
-![ecobin_Page_04](https://github.com/IT21307058/EcoBin/assets/96247301/08992d5d-a1a1-40d2-a3c1-e542e092dee7){:width="50%"}
-![ecobin_Page_05](https://github.com/IT21307058/EcoBin/assets/96247301/d594bf90-a1ba-4a3a-a1c2-5507ed499359){:width="50%"}
-![ecobin_Page_06](https://github.com/IT21307058/EcoBin/assets/96247301/823541df-970a-4531-be05-645a41dddfe4){:width="50%"}
 
-![ecobin_Page_31](https://github.com/IT21307058/EcoBin/assets/96247301/833d63dd-b962-47cc-9c65-a6b662c5070b){:width="50%"}
-![ecobin_Page_21](https://github.com/IT21307058/EcoBin/assets/96247301/b9f55f56-3e36-4d3a-9c29-6c274289520f){:width="50%"}
-![ecobin_Page_43](https://github.com/IT21307058/EcoBin/assets/96247301/07f55971-9747-4d32-995c-e0bc258e175f){:width="50%"}
-![ecobin_Page_16](https://github.com/IT21307058/EcoBin/assets/96247301/5c1464b4-e61f-4979-9adf-b66807c61c1e){:width="50%"}
-![ecobin_Page_15](https://github.com/IT21307058/EcoBin/assets/96247301/3defc629-78b1-4129-8cb9-7d8dd81d329a){:width="50%"}
-![ecobin_Page_14](https://github.com/IT21307058/EcoBin/assets/96247301/98ae140a-2964-40d7-8141-b2d4fae4a40a){:width="50%"}
-![ecobin_Page_13](https://github.com/IT21307058/EcoBin/assets/96247301/3153c3dd-1f42-4969-865c-2734132a4403){:width="50%"}
-![ecobin_Page_12](https://github.com/IT21307058/EcoBin/assets/96247301/c77be2db-c02d-4fb1-a4f1-4172f523faf1){:width="50%"}
-![ecobin_Page_11](https://github.com/IT21307058/EcoBin/assets/96247301/62fed5e6-1bef-45b6-a6ab-f33b74f36c4b){:width="50%"}
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/bc7b7ab4-8672-4244-8591-1eea183d6faa" width="48%">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/9ccbe463-c596-4969-a009-36cf81b4900b" width="48%">
+</div>
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/d8eec44d-6697-41b7-b855-cc6b71511612" width="48%">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/08992d5d-a1a1-40d2-a3c1-e542e092dee7" width="48%">
+</div>
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/833d63dd-b962-47cc-9c65-a6b662c5070b" width="48%">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/b9f55f56-3e36-4d3a-9c29-6c274289520f" width="48%">
+</div>
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/d594bf90-a1ba-4a3a-a1c2-5507ed499359" width="48%">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/823541df-970a-4531-be05-645a41dddfe4" width="48%">
+</div>
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/07f55971-9747-4d32-995c-e0bc258e175f" width="48%">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/5c1464b4-e61f-4979-9adf-b66807c61c1e" width="48%">
+</div>
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/3defc629-78b1-4129-8cb9-7d8dd81d329a" width="48%">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/98ae140a-2964-40d7-8141-b2d4fae4a40a" width="48%">
+</div>
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/3153c3dd-1f42-4969-865c-2734132a4403" width="48%">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/c77be2db-c02d-4fb1-a4f1-4172f523faf1" width="48%">
+</div>
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    <img src="https://github.com/IT21307058/EcoBin/assets/96247301/62fed5e6-1bef-45b6-a6ab-f33b74f36c4b" width="48%">
+</div>
+
+
+
+
+
+
 
 
 
